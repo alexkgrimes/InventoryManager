@@ -7,14 +7,28 @@
 //
 
 import UIKit
+import BarcodeScanner
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let navigationController = UINavigationController()
+        let barcodeViewController = BarcodeScannerViewController()
+        
+        navigationController.viewControllers = [barcodeViewController]
+        
+        
+        barcodeViewController.codeDelegate = self
+        barcodeViewController.errorDelegate = self
+        barcodeViewController.dismissalDelegate = self
+        
+        window!.rootViewController = barcodeViewController
+        window!.makeKeyAndVisible()
         return true
     }
 
@@ -35,3 +49,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: BarcodeScannerCodeDelegate {
+    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+        return
+    }
+}
+
+extension AppDelegate: BarcodeScannerErrorDelegate {
+    func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
+        return
+    }
+}
+
+extension AppDelegate: BarcodeScannerDismissalDelegate {
+    func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
+        return
+    }
+}

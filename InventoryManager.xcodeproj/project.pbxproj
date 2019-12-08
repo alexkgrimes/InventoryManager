@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56B5E50658386C001587A9E2 /* Pods_InventoryManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 975892CD624DE2AC28DF78E3 /* Pods_InventoryManager.framework */; };
+		C1F09F0FC3DC524047A7B893 /* Pods_InventoryManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908DA49DD84A73AFB8046D24 /* Pods_InventoryManagerTests.framework */; };
 		FAB2B9FC238B68C6000F315B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FB238B68C6000F315B /* AppDelegate.swift */; };
 		FAB2B9FE238B68C6000F315B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FD238B68C6000F315B /* SceneDelegate.swift */; };
 		FAB2BA00238B68C6000F315B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FF238B68C6000F315B /* ViewController.swift */; };
@@ -27,6 +29,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		252BE016CEC2DB381C926D5D /* Pods-InventoryManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventoryManager.release.xcconfig"; path = "Target Support Files/Pods-InventoryManager/Pods-InventoryManager.release.xcconfig"; sourceTree = "<group>"; };
+		40EF555FED26658D87BF5740 /* Pods-InventoryManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventoryManagerTests.debug.xcconfig"; path = "Target Support Files/Pods-InventoryManagerTests/Pods-InventoryManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		908DA49DD84A73AFB8046D24 /* Pods_InventoryManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InventoryManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		975892CD624DE2AC28DF78E3 /* Pods_InventoryManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InventoryManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9ED194016E42E5EC27A80B8E /* Pods-InventoryManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventoryManager.debug.xcconfig"; path = "Target Support Files/Pods-InventoryManager/Pods-InventoryManager.debug.xcconfig"; sourceTree = "<group>"; };
+		F56A9B430FD8AE8E1A7EFB5E /* Pods-InventoryManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventoryManagerTests.release.xcconfig"; path = "Target Support Files/Pods-InventoryManagerTests/Pods-InventoryManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 		FAB2B9F8238B68C6000F315B /* InventoryManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventoryManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB2B9FB238B68C6000F315B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAB2B9FD238B68C6000F315B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56B5E50658386C001587A9E2 /* Pods_InventoryManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,18 +61,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1F09F0FC3DC524047A7B893 /* Pods_InventoryManagerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29394443CC163EE0E1075AFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				975892CD624DE2AC28DF78E3 /* Pods_InventoryManager.framework */,
+				908DA49DD84A73AFB8046D24 /* Pods_InventoryManagerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C75ACC118D7E814BA45B0330 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9ED194016E42E5EC27A80B8E /* Pods-InventoryManager.debug.xcconfig */,
+				252BE016CEC2DB381C926D5D /* Pods-InventoryManager.release.xcconfig */,
+				40EF555FED26658D87BF5740 /* Pods-InventoryManagerTests.debug.xcconfig */,
+				F56A9B430FD8AE8E1A7EFB5E /* Pods-InventoryManagerTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FAB2B9EF238B68C6000F315B = {
 			isa = PBXGroup;
 			children = (
 				FAB2B9FA238B68C6000F315B /* InventoryManager */,
 				FAB2BA11238B68CB000F315B /* InventoryManagerTests */,
 				FAB2B9F9238B68C6000F315B /* Products */,
+				C75ACC118D7E814BA45B0330 /* Pods */,
+				29394443CC163EE0E1075AFC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,9 +138,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAB2BA17238B68CB000F315B /* Build configuration list for PBXNativeTarget "InventoryManager" */;
 			buildPhases = (
+				04D82EA485E4FC9E17530952 /* [CP] Check Pods Manifest.lock */,
 				FAB2B9F4238B68C6000F315B /* Sources */,
 				FAB2B9F5238B68C6000F315B /* Frameworks */,
 				FAB2B9F6238B68C6000F315B /* Resources */,
+				874FB9F4F7781651806F0A4F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +157,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAB2BA1A238B68CB000F315B /* Build configuration list for PBXNativeTarget "InventoryManagerTests" */;
 			buildPhases = (
+				F352753914E04CAF19EE8B81 /* [CP] Check Pods Manifest.lock */,
 				FAB2BA0A238B68CB000F315B /* Sources */,
 				FAB2BA0B238B68CB000F315B /* Frameworks */,
 				FAB2BA0C238B68CB000F315B /* Resources */,
@@ -194,6 +229,70 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04D82EA485E4FC9E17530952 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InventoryManager-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		874FB9F4F7781651806F0A4F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InventoryManager/Pods-InventoryManager-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-InventoryManager/Pods-InventoryManager-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-InventoryManager/Pods-InventoryManager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F352753914E04CAF19EE8B81 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InventoryManagerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FAB2B9F4238B68C6000F315B /* Sources */ = {
@@ -360,6 +459,7 @@
 		};
 		FAB2BA18238B68CB000F315B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9ED194016E42E5EC27A80B8E /* Pods-InventoryManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -378,6 +478,7 @@
 		};
 		FAB2BA19238B68CB000F315B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 252BE016CEC2DB381C926D5D /* Pods-InventoryManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -396,6 +497,7 @@
 		};
 		FAB2BA1B238B68CB000F315B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40EF555FED26658D87BF5740 /* Pods-InventoryManagerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -418,6 +520,7 @@
 		};
 		FAB2BA1C238B68CB000F315B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F56A9B430FD8AE8E1A7EFB5E /* Pods-InventoryManagerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
