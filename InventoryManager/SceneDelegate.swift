@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BarcodeScanner
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -20,10 +21,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let loginController = LoginViewController()
-        let navigationController = UINavigationController(rootViewController: loginController)
-        // navigationController.pushViewController(loginController, animated: false)
-        navigationController.navigationBar.isTranslucent = true
+        let rootViewController: UIViewController
+        if AuthController.isSignedIn {
+            rootViewController = BarcodeScannerViewController()
+        } else {
+            rootViewController = LoginViewController()
+        }
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        navigationController.navigationBar.isHidden = true
         
         window.rootViewController = navigationController
         self.window = window

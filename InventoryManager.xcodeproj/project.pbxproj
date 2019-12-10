@@ -9,12 +9,17 @@
 /* Begin PBXBuildFile section */
 		56B5E50658386C001587A9E2 /* Pods_InventoryManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 975892CD624DE2AC28DF78E3 /* Pods_InventoryManager.framework */; };
 		C1F09F0FC3DC524047A7B893 /* Pods_InventoryManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908DA49DD84A73AFB8046D24 /* Pods_InventoryManagerTests.framework */; };
+		FA1E118D239F21520033104F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E118C239F21520033104F /* User.swift */; };
+		FA1E1191239F25BD0033104F /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E1190239F25BD0033104F /* AuthenticationController.swift */; };
+		FA1E1193239F265B0033104F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E1192239F265B0033104F /* Settings.swift */; };
+		FA1E1195239F2F0B0033104F /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E1194239F2F0B0033104F /* KeychainPasswordItem.swift */; };
 		FAB2B9FC238B68C6000F315B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FB238B68C6000F315B /* AppDelegate.swift */; };
 		FAB2B9FE238B68C6000F315B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FD238B68C6000F315B /* SceneDelegate.swift */; };
-		FAB2BA00238B68C6000F315B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FF238B68C6000F315B /* LoginViewController.swift */; };
+		FAB2BA00238B68C6000F315B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FF238B68C6000F315B /* LoginView.swift */; };
 		FAB2BA05238B68CB000F315B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB2BA04238B68CB000F315B /* Assets.xcassets */; };
 		FAB2BA08238B68CB000F315B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB2BA06238B68CB000F315B /* LaunchScreen.storyboard */; };
 		FAB2BA13238B68CB000F315B /* InventoryManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2BA12238B68CB000F315B /* InventoryManagerTests.swift */; };
+		FAF6007B239F15A500213B07 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF6007A239F15A500213B07 /* LoginController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,16 +39,21 @@
 		975892CD624DE2AC28DF78E3 /* Pods_InventoryManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InventoryManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ED194016E42E5EC27A80B8E /* Pods-InventoryManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventoryManager.debug.xcconfig"; path = "Target Support Files/Pods-InventoryManager/Pods-InventoryManager.debug.xcconfig"; sourceTree = "<group>"; };
 		F56A9B430FD8AE8E1A7EFB5E /* Pods-InventoryManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventoryManagerTests.release.xcconfig"; path = "Target Support Files/Pods-InventoryManagerTests/Pods-InventoryManagerTests.release.xcconfig"; sourceTree = "<group>"; };
+		FA1E118C239F21520033104F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FA1E1190239F25BD0033104F /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
+		FA1E1192239F265B0033104F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		FA1E1194239F2F0B0033104F /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		FAB2B9F8238B68C6000F315B /* InventoryManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventoryManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB2B9FB238B68C6000F315B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAB2B9FD238B68C6000F315B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FAB2B9FF238B68C6000F315B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FAB2B9FF238B68C6000F315B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FAB2BA04238B68CB000F315B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAB2BA07238B68CB000F315B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAB2BA09238B68CB000F315B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAB2BA0E238B68CB000F315B /* InventoryManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InventoryManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB2BA12238B68CB000F315B /* InventoryManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryManagerTests.swift; sourceTree = "<group>"; };
 		FAB2BA14238B68CB000F315B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAF6007A239F15A500213B07 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +96,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FA1E118E239F21580033104F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA1E118C239F21520033104F /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FA1E118F239F25A00033104F /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				FA1E1190239F25BD0033104F /* AuthenticationController.swift */,
+				FA1E1192239F265B0033104F /* Settings.swift */,
+				FA1E1194239F2F0B0033104F /* KeychainPasswordItem.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		FAB2B9EF238B68C6000F315B = {
 			isa = PBXGroup;
 			children = (
@@ -109,9 +137,11 @@
 		FAB2B9FA238B68C6000F315B /* InventoryManager */ = {
 			isa = PBXGroup;
 			children = (
+				FA1E118F239F25A00033104F /* Authentication */,
+				FA1E118E239F21580033104F /* Models */,
+				FAF60079239F13E200213B07 /* Login */,
 				FAB2B9FB238B68C6000F315B /* AppDelegate.swift */,
 				FAB2B9FD238B68C6000F315B /* SceneDelegate.swift */,
-				FAB2B9FF238B68C6000F315B /* LoginViewController.swift */,
 				FAB2BA04238B68CB000F315B /* Assets.xcassets */,
 				FAB2BA06238B68CB000F315B /* LaunchScreen.storyboard */,
 				FAB2BA09238B68CB000F315B /* Info.plist */,
@@ -126,6 +156,15 @@
 				FAB2BA14238B68CB000F315B /* Info.plist */,
 			);
 			path = InventoryManagerTests;
+			sourceTree = "<group>";
+		};
+		FAF60079239F13E200213B07 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FAB2B9FF238B68C6000F315B /* LoginView.swift */,
+				FAF6007A239F15A500213B07 /* LoginController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,8 +334,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAB2BA00238B68C6000F315B /* LoginViewController.swift in Sources */,
+				FAB2BA00238B68C6000F315B /* LoginView.swift in Sources */,
+				FAF6007B239F15A500213B07 /* LoginController.swift in Sources */,
 				FAB2B9FC238B68C6000F315B /* AppDelegate.swift in Sources */,
+				FA1E1195239F2F0B0033104F /* KeychainPasswordItem.swift in Sources */,
+				FA1E1191239F25BD0033104F /* AuthenticationController.swift in Sources */,
+				FA1E1193239F265B0033104F /* Settings.swift in Sources */,
+				FA1E118D239F21520033104F /* User.swift in Sources */,
 				FAB2B9FE238B68C6000F315B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

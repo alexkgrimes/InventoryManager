@@ -8,33 +8,41 @@
 
 import UIKit
 
+protocol LoginViewControllerOutput {
+    func signUpButtonTapped(email: String, password: String)
+}
+
 class LoginViewController: UIViewController {
+    
+    var output: LoginController?
     
     private enum Constants {
         static let loginText = "Login"
         static let signUpText = "Sign Up"
+        static let titleFontName = "Marker Felt"
+        static let titleText = "Inventory Manager"
     }
     
     // MARK: - Properties
     
     let label: UILabel = {
         let label = UILabel()
-        label.text = "Inventory Manager"
-        label.font = UIFont(name: "Marker Felt", size: 100)
+        label.text = Constants.titleText
+        label.font = UIFont(name: Constants.titleFontName, size: 100)
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         return label
     }()
     
-    let usernameTextField: UITextField = {
+    let emailTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Username"
+        textField.placeholder = "Email"
         textField.font = UIFont.systemFont(ofSize: 15)
-        textField.borderStyle = UITextField.BorderStyle.roundedRect
-        textField.autocorrectionType = UITextAutocorrectionType.no
-        textField.keyboardType = UIKeyboardType.default
-        textField.returnKeyType = UIReturnKeyType.done
-        textField.clearButtonMode = UITextField.ViewMode.whileEditing
+        textField.borderStyle = .roundedRect
+        textField.autocorrectionType = .no
+        textField.keyboardType = .emailAddress
+        textField.returnKeyType = .done
+        textField.clearButtonMode = .whileEditing
         return textField
     }()
     
@@ -42,11 +50,11 @@ class LoginViewController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Password"
         textField.font = UIFont.systemFont(ofSize: 15)
-        textField.borderStyle = UITextField.BorderStyle.roundedRect
-        textField.autocorrectionType = UITextAutocorrectionType.no
-        textField.keyboardType = UIKeyboardType.default
-        textField.returnKeyType = UIReturnKeyType.done
-        textField.clearButtonMode = UITextField.ViewMode.whileEditing
+        textField.borderStyle = .roundedRect
+        textField.autocorrectionType = .no
+        textField.keyboardType = .default
+        textField.returnKeyType = .go
+        textField.clearButtonMode = .whileEditing
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -64,6 +72,7 @@ class LoginViewController: UIViewController {
         button.setTitle(Constants.signUpText, for: .normal)
         button.backgroundColor = Color.darkBlue
         button.layer.cornerRadius = CornerRadius.small
+        button.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -93,6 +102,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        output = LoginController(view: self)
 
         loginView.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -100,7 +110,7 @@ class LoginViewController: UIViewController {
         hStack.addArrangedSubview(loginButton)
         hStack.addArrangedSubview(signUpButton)
         
-        vStack.addArrangedSubview(usernameTextField)
+        vStack.addArrangedSubview(emailTextField)
         vStack.addArrangedSubview(passwordTextField)
         vStack.addArrangedSubview(hStack)
         
@@ -142,10 +152,20 @@ private extension LoginViewController {
         ])
         
         NSLayoutConstraint.activate([
-            usernameTextField.widthAnchor.constraint(equalTo: vStack.widthAnchor),
+            emailTextField.widthAnchor.constraint(equalTo: vStack.widthAnchor),
             passwordTextField.widthAnchor.constraint(equalTo: vStack.widthAnchor),
             hStack.widthAnchor.constraint(equalTo: vStack.widthAnchor)
         ])
+    }
+}
+
+extension LoginViewController {
+    @objc func signUpButtonTapped() {
+        view.endEditing(true)
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            return
+        }
+        output?.signUpButtonTapped(email: email, password: password)
     }
 }
 
