@@ -9,11 +9,15 @@
 import UIKit
 
 protocol LoginControllerOutput {
-    
+    func presentEmailNotValid()
+    func presentPasswordNotValid()
+    func signInFailed()
+    func createUserFailed()
+    func signInSuccess()
 }
 
 class LoginController {
-    var view: LoginViewController
+    var view: LoginControllerOutput
     
     init(view: LoginViewController) {
         self.view = view
@@ -23,30 +27,54 @@ class LoginController {
 extension LoginController: LoginViewControllerOutput {
     func signUpButtonTapped(email: String, password: String) {
         if !emailIsValid(email) {
-            // show not email not valid modal
+            view.presentEmailNotValid()
         }
         
         if password.count < 8 {
-            // show password not long enough modal
+            view.presentPasswordNotValid()
         }
         
         let name = UIDevice.current.name
         let user = User(name: name, email: email)
         
-        do {
-          try AuthController.signIn(user, password: password)
-        } catch {
-          print("Error signing in: \(error.localizedDescription)")
+        AuthController.signUp(output: self, user, password: password)
+    }
+    
+    func loginButtonTapped(email: String, password: String) {
+        if !emailIsValid(email) {
+            view.presentEmailNotValid()
         }
+        
+        if password.count < 8 {
+            view.presentPasswordNotValid()
+        }
+        
+        let name = UIDevice.current.name
+        let user = User(name: name, email: email)
+        AuthController.signIn(output: self, user, password: password)
+    }
+}
+
+extension LoginController: AuthControllerOutput {
+    
+    func signInFailed() {
+        view.signInFailed()
+    }
+    
+    func signInSuccess() {
+        view.signInSuccess()
+    }
+    
+    func createUserFailed() {
+        view.createUserFailed()
     }
 }
 
 private extension LoginController {
     
     func emailIsValid(_ email: String) -> Bool {
-        let emailRegEx = "(?:[a-zA-Z0-9!#$%\\&‘*+/=?\\^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%\\&'*+/=?\\^_`{|}" + "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" + "x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-" + "z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5" + "]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-" + "9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" + "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
-        
-        let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx)
+        let emailRegEx = Regex.email
+        let emailTest = NSPredicate(format: Regex.emailFormat, emailRegEx)
         return emailTest.evaluate(with: email)
     }
 }

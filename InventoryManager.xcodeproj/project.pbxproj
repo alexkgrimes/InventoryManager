@@ -13,12 +13,16 @@
 		FA1E1191239F25BD0033104F /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E1190239F25BD0033104F /* AuthenticationController.swift */; };
 		FA1E1193239F265B0033104F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E1192239F265B0033104F /* Settings.swift */; };
 		FA1E1195239F2F0B0033104F /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E1194239F2F0B0033104F /* KeychainPasswordItem.swift */; };
+		FAABE3E923B82CCE006EA1F4 /* BarcodeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAABE3E823B82CCE006EA1F4 /* BarcodeContainerViewController.swift */; };
 		FAB2B9FC238B68C6000F315B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FB238B68C6000F315B /* AppDelegate.swift */; };
 		FAB2B9FE238B68C6000F315B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FD238B68C6000F315B /* SceneDelegate.swift */; };
 		FAB2BA00238B68C6000F315B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FF238B68C6000F315B /* LoginView.swift */; };
 		FAB2BA05238B68CB000F315B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB2BA04238B68CB000F315B /* Assets.xcassets */; };
 		FAB2BA08238B68CB000F315B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB2BA06238B68CB000F315B /* LaunchScreen.storyboard */; };
 		FAB2BA13238B68CB000F315B /* InventoryManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2BA12238B68CB000F315B /* InventoryManagerTests.swift */; };
+		FAB37CB523A08D4C008632B7 /* AppearanceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB37CB423A08D4C008632B7 /* AppearanceConstants.swift */; };
+		FAB37CB723A093A0008632B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB37CB623A093A0008632B7 /* GoogleService-Info.plist */; };
+		FAB37CBA23A5ED1F008632B7 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB37CB923A5ED1F008632B7 /* Strings.swift */; };
 		FAF6007B239F15A500213B07 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF6007A239F15A500213B07 /* LoginController.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +47,7 @@
 		FA1E1190239F25BD0033104F /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 		FA1E1192239F265B0033104F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		FA1E1194239F2F0B0033104F /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		FAABE3E823B82CCE006EA1F4 /* BarcodeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeContainerViewController.swift; sourceTree = "<group>"; };
 		FAB2B9F8238B68C6000F315B /* InventoryManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventoryManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB2B9FB238B68C6000F315B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAB2B9FD238B68C6000F315B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +58,10 @@
 		FAB2BA0E238B68CB000F315B /* InventoryManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InventoryManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB2BA12238B68CB000F315B /* InventoryManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryManagerTests.swift; sourceTree = "<group>"; };
 		FAB2BA14238B68CB000F315B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAB37CB423A08D4C008632B7 /* AppearanceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceConstants.swift; sourceTree = "<group>"; };
+		FAB37CB623A093A0008632B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FAB37CB823A095E8008632B7 /* InventoryManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InventoryManager.entitlements; sourceTree = "<group>"; };
+		FAB37CB923A5ED1F008632B7 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		FAF6007A239F15A500213B07 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +123,14 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
+		FAABE3E723B82C88006EA1F4 /* BarcodeScanner */ = {
+			isa = PBXGroup;
+			children = (
+				FAABE3E823B82CCE006EA1F4 /* BarcodeContainerViewController.swift */,
+			);
+			path = BarcodeScanner;
+			sourceTree = "<group>";
+		};
 		FAB2B9EF238B68C6000F315B = {
 			isa = PBXGroup;
 			children = (
@@ -137,7 +154,10 @@
 		FAB2B9FA238B68C6000F315B /* InventoryManager */ = {
 			isa = PBXGroup;
 			children = (
+				FAB37CB823A095E8008632B7 /* InventoryManager.entitlements */,
+				FAB37CB323A08D37008632B7 /* Appearance */,
 				FA1E118F239F25A00033104F /* Authentication */,
+				FAABE3E723B82C88006EA1F4 /* BarcodeScanner */,
 				FA1E118E239F21580033104F /* Models */,
 				FAF60079239F13E200213B07 /* Login */,
 				FAB2B9FB238B68C6000F315B /* AppDelegate.swift */,
@@ -145,6 +165,7 @@
 				FAB2BA04238B68CB000F315B /* Assets.xcassets */,
 				FAB2BA06238B68CB000F315B /* LaunchScreen.storyboard */,
 				FAB2BA09238B68CB000F315B /* Info.plist */,
+				FAB37CB623A093A0008632B7 /* GoogleService-Info.plist */,
 			);
 			path = InventoryManager;
 			sourceTree = "<group>";
@@ -156,6 +177,15 @@
 				FAB2BA14238B68CB000F315B /* Info.plist */,
 			);
 			path = InventoryManagerTests;
+			sourceTree = "<group>";
+		};
+		FAB37CB323A08D37008632B7 /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				FAB37CB423A08D4C008632B7 /* AppearanceConstants.swift */,
+				FAB37CB923A5ED1F008632B7 /* Strings.swift */,
+			);
+			path = Appearance;
 			sourceTree = "<group>";
 		};
 		FAF60079239F13E200213B07 /* Login */ = {
@@ -253,6 +283,7 @@
 			files = (
 				FAB2BA08238B68CB000F315B /* LaunchScreen.storyboard in Resources */,
 				FAB2BA05238B68CB000F315B /* Assets.xcassets in Resources */,
+				FAB37CB723A093A0008632B7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,10 +367,13 @@
 			files = (
 				FAB2BA00238B68C6000F315B /* LoginView.swift in Sources */,
 				FAF6007B239F15A500213B07 /* LoginController.swift in Sources */,
+				FAB37CBA23A5ED1F008632B7 /* Strings.swift in Sources */,
 				FAB2B9FC238B68C6000F315B /* AppDelegate.swift in Sources */,
+				FAB37CB523A08D4C008632B7 /* AppearanceConstants.swift in Sources */,
 				FA1E1195239F2F0B0033104F /* KeychainPasswordItem.swift in Sources */,
 				FA1E1191239F25BD0033104F /* AuthenticationController.swift in Sources */,
 				FA1E1193239F265B0033104F /* Settings.swift in Sources */,
+				FAABE3E923B82CCE006EA1F4 /* BarcodeContainerViewController.swift in Sources */,
 				FA1E118D239F21520033104F /* User.swift in Sources */,
 				FAB2B9FE238B68C6000F315B /* SceneDelegate.swift in Sources */,
 			);
@@ -494,6 +528,7 @@
 			baseConfigurationReference = 9ED194016E42E5EC27A80B8E /* Pods-InventoryManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = InventoryManager/InventoryManager.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V8LG346P7T;
 				INFOPLIST_FILE = InventoryManager/Info.plist;
@@ -513,6 +548,7 @@
 			baseConfigurationReference = 252BE016CEC2DB381C926D5D /* Pods-InventoryManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = InventoryManager/InventoryManager.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V8LG346P7T;
 				INFOPLIST_FILE = InventoryManager/Info.plist;

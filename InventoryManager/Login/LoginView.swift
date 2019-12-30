@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import BarcodeScanner
 
 protocol LoginViewControllerOutput {
     func signUpButtonTapped(email: String, password: String)
+    func loginButtonTapped(email: String, password: String)
 }
 
 class LoginViewController: UIViewController {
@@ -64,6 +66,7 @@ class LoginViewController: UIViewController {
         button.setTitle(Constants.loginText, for: .normal)
         button.backgroundColor = Color.brightBlue
         button.layer.cornerRadius = CornerRadius.small
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -167,5 +170,58 @@ extension LoginViewController {
         }
         output?.signUpButtonTapped(email: email, password: password)
     }
+    
+    @objc func loginButtonTapped() {
+        view.endEditing(true)
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            return
+        }
+        output?.loginButtonTapped(email: email, password: password)
+    }
 }
 
+extension LoginViewController: LoginControllerOutput {
+    
+    func presentPasswordNotValid() {
+        let alert = UIAlertController(title: ErrorStrings.invalidPassword,
+                                      message: ErrorStrings.invalidPasswordMessage,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Strings.ok, style: .default))
+
+        present(alert, animated: true)
+    }
+    
+    func presentEmailNotValid() {
+        let alert = UIAlertController(title: ErrorStrings.invalidEmail,
+                                      message: ErrorStrings.invalidEmailMessage,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Strings.ok, style: .default))
+
+        present(alert, animated: true)
+    }
+    
+    func signInFailed() {
+        let alert = UIAlertController(title: ErrorStrings.signInFailed,
+                                      message: ErrorStrings.signInFailedMessage,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Strings.ok, style: .default))
+        
+        self.present(alert, animated: true)
+    }
+    
+    func createUserFailed() {
+        let alert = UIAlertController(title: ErrorStrings.createUserFailed,
+                                      message: ErrorStrings.createUserFailedMessage,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Strings.ok, style: .default))
+        
+        self.present(alert, animated: true)
+    }
+    
+    func signInSuccess() {
+        let barcodeScanner = BarcodeContainerViewController()
+        if let navigationController = navigationController {
+            navigationController.pushViewController(barcodeScanner, animated: true)
+        }
+    }
+}

@@ -21,14 +21,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let rootViewController: UIViewController
-        if AuthController.isSignedIn {
-            rootViewController = BarcodeScannerViewController()
-        } else {
-            rootViewController = LoginViewController()
-        }
+        let rootViewController = LoginViewController()
         let navigationController = UINavigationController(rootViewController: rootViewController)
-        navigationController.navigationBar.isHidden = true
+        if AuthController.isSignedIn {
+            let barcodeScanner = BarcodeContainerViewController()
+            navigationController.pushViewController(barcodeScanner, animated: true)
+            navigationController.navigationBar.isHidden = false
+        } else {
+            navigationController.navigationBar.isHidden = true
+        }
         
         window.rootViewController = navigationController
         self.window = window

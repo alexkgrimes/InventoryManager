@@ -8,36 +8,73 @@
 
 import Foundation
 import CryptoKit
+import FirebaseAuth
+import Firebase
+
+protocol AuthControllerOutput {
+    func signInFailed()
+    func signInSuccess()
+    func createUserFailed()
+}
+
+protocol AuthControllerLogout {
+    func signOut()
+}
 
 final class AuthController {
     
     static let serviceName = "InventoryManagerService"
     
     static var isSignedIn: Bool {
-        guard let currentUser = Settings.currentUser else {
-            return false
+        return Auth.auth().currentUser != nil
+    }
+    
+    static func signIn(output: AuthControllerOutput, _ user: User, password: String) {
+        Auth.auth().signIn(withEmail: user.email, password: password) { authUser, signInError in
+            if signInError != nil, authUser == nil {
+                output.signInFailed()
+            } else {
+                output.signInSuccess()
+            }
+        }
+    }
+    
+    static func signUp(output: AuthControllerOutput, _ user: User, password: String) {
+        Auth.auth().createUser(withEmail: user.email, password: password) { authUser, createError in
+            if createError != nil {
+                output.createUserFailed()
+                return
+            }
+            
+            Auth.auth().signIn(withEmail: user.email, password: password) { user, signInError in
+                if signInError != nil, user == nil {
+                    output.signInFailed()
+                } else {
+                    output.signInSuccess()
+                }
+            }
+        }
+    }
+    
+    static func signOut(output: AuthControllerLogout) {
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        
+        let onlineRef = Database.database().reference(withPath: "online/\(user.uid)")
+        onlineRef.removeValue { error, _ in
+            if let error = error {
+                print("Removing online failed: \(error)")
+                return
+            }
         }
         
         do {
-            let password = try KeychainPasswordItem(service: serviceName, account: currentUser.email).readPassword()
-            return password.count > 0
-        } catch {
-            return false
+            try Auth.auth().signOut()
+        } catch (let error) {
+            print("Auth sign out failed: \(error)")
         }
-    }
-    
-    class func passwordHash(from email: String, password: String) -> SHA256Digest {
-        let salt = "x4vV8bGgqqmQwgCoyXFQj+(o.nUNQhVP7ND"
-        let inputString = "\(password).\(email).\(salt)"
-        let inputData = Data(inputString.utf8)
-        return SHA256.hash(data: inputData)
-    }
-    
-    class func signIn(_ user: User, password: String) throws {
-        let finalHash = passwordHash(from: user.email, password: password)
-        let hashString = finalHash.compactMap { String(format: "%02x", $0) }.joined()
-        try KeychainPasswordItem(service: serviceName, account: user.email).savePassword(hashString)
-
-        Settings.currentUser = user
+        
+        output.signOut()
     }
 }
