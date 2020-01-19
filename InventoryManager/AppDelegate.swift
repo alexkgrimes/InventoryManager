@@ -36,21 +36,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
-//extension AppDelegate: BarcodeScannerCodeDelegate {
-//    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
-//        return
-//    }
-//}
-//
-//extension AppDelegate: BarcodeScannerErrorDelegate {
-//    func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
-//        return
-//    }
-//}
-//
-//extension AppDelegate: BarcodeScannerDismissalDelegate {
-//    func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
-//        return
-//    }
-//}

@@ -7,15 +7,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E569FADD-1149-4AA0-B414-47B05BCE5D21"
+            uuid = "FE6FF513-6B88-46E1-8568-1C2612CEEE77"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "InventoryManager/BarcodeScanner/BarcodeContainerViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
             landmarkName = "signOut()"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,80 +23,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0933D2B1-BE90-434A-AF49-2923B36CA70E"
+            uuid = "0386B58E-54EB-4C66-8BE5-A24F26D01073"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "InventoryManager/Authentication/AuthenticationController.swift"
+            filePath = "InventoryManager/BarcodeScanner/BarcodeDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "signOut(output:)"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "scannerDidLogout()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6C8B92A9-5281-4838-96CA-942BBC5FE7C2"
+            uuid = "EA34D974-ACB6-4F38-8C89-0532F7D69887"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "InventoryManager/Authentication/AuthenticationController.swift"
+            filePath = "InventoryManager/BarcodeScanner/BarcodeDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "signOut(output:)"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "signOut()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C1837D7C-BB67-4408-90C0-F12D77BEA3DF"
+            uuid = "72E1D408-BEF2-40AA-A0BF-356BFFE6F711"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "InventoryManager/Authentication/AuthenticationController.swift"
+            filePath = "InventoryManager/SceneDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "signOut(output:)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "scene(_:willConnectTo:options:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D047A71A-D03E-454B-BAE2-4B54D73B422C"
+            uuid = "FB2AC1CA-6731-4F43-83F9-FF145F54DC01"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "InventoryManager/Authentication/AuthenticationController.swift"
+            filePath = "InventoryManager/Login/LoginView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "signOut(output:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CAB6004C-9D4E-4453-94D2-DB6B1590F02D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "InventoryManager/Authentication/AuthenticationController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "signOut(output:)"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "signInSuccess()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

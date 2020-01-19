@@ -13,7 +13,7 @@
 		FA1E1191239F25BD0033104F /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E1190239F25BD0033104F /* AuthenticationController.swift */; };
 		FA1E1193239F265B0033104F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E1192239F265B0033104F /* Settings.swift */; };
 		FA1E1195239F2F0B0033104F /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E1194239F2F0B0033104F /* KeychainPasswordItem.swift */; };
-		FAABE3E923B82CCE006EA1F4 /* BarcodeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAABE3E823B82CCE006EA1F4 /* BarcodeContainerViewController.swift */; };
+		FAABE3E923B82CCE006EA1F4 /* BarcodeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAABE3E823B82CCE006EA1F4 /* BarcodeDelegate.swift */; };
 		FAB2B9FC238B68C6000F315B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FB238B68C6000F315B /* AppDelegate.swift */; };
 		FAB2B9FE238B68C6000F315B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FD238B68C6000F315B /* SceneDelegate.swift */; };
 		FAB2BA00238B68C6000F315B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FF238B68C6000F315B /* LoginView.swift */; };
@@ -47,7 +47,7 @@
 		FA1E1190239F25BD0033104F /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
 		FA1E1192239F265B0033104F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		FA1E1194239F2F0B0033104F /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
-		FAABE3E823B82CCE006EA1F4 /* BarcodeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeContainerViewController.swift; sourceTree = "<group>"; };
+		FAABE3E823B82CCE006EA1F4 /* BarcodeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDelegate.swift; sourceTree = "<group>"; };
 		FAB2B9F8238B68C6000F315B /* InventoryManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventoryManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB2B9FB238B68C6000F315B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAB2B9FD238B68C6000F315B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		FAABE3E723B82C88006EA1F4 /* BarcodeScanner */ = {
 			isa = PBXGroup;
 			children = (
-				FAABE3E823B82CCE006EA1F4 /* BarcodeContainerViewController.swift */,
+				FAABE3E823B82CCE006EA1F4 /* BarcodeDelegate.swift */,
 			);
 			path = BarcodeScanner;
 			sourceTree = "<group>";
@@ -373,7 +373,7 @@
 				FA1E1195239F2F0B0033104F /* KeychainPasswordItem.swift in Sources */,
 				FA1E1191239F25BD0033104F /* AuthenticationController.swift in Sources */,
 				FA1E1193239F265B0033104F /* Settings.swift in Sources */,
-				FAABE3E923B82CCE006EA1F4 /* BarcodeContainerViewController.swift in Sources */,
+				FAABE3E923B82CCE006EA1F4 /* BarcodeDelegate.swift in Sources */,
 				FA1E118D239F21520033104F /* User.swift in Sources */,
 				FAB2B9FE238B68C6000F315B /* SceneDelegate.swift in Sources */,
 			);

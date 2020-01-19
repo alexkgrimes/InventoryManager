@@ -18,6 +18,8 @@ class LoginViewController: UIViewController {
     
     var output: LoginController?
     
+    let codeDelegate = BarcodeDelegate(view: nil)
+    
     private enum Constants {
         static let loginText = "Login"
         static let signUpText = "Sign Up"
@@ -219,9 +221,17 @@ extension LoginViewController: LoginControllerOutput {
     }
     
     func signInSuccess() {
-        let barcodeScanner = BarcodeContainerViewController()
+        let barcodeScanner = BarcodeScannerViewController()
+        codeDelegate.view = barcodeScanner
+        barcodeScanner.codeDelegate = codeDelegate
+        
         if let navigationController = navigationController {
+            barcodeScanner.navigationController?.navigationBar.isHidden = false
+            barcodeScanner.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: codeDelegate, action: #selector(codeDelegate.scannerDidLogout))
+            barcodeScanner.navigationItem.hidesBackButton = true
+            
             navigationController.pushViewController(barcodeScanner, animated: true)
+            navigationController.navigationBar.isHidden = false
         }
     }
 }

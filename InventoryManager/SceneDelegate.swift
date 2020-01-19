@@ -12,7 +12,8 @@ import BarcodeScanner
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
+    let codeDelegate = BarcodeDelegate(view: nil)
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -24,7 +25,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let rootViewController = LoginViewController()
         let navigationController = UINavigationController(rootViewController: rootViewController)
         if AuthController.isSignedIn {
-            let barcodeScanner = BarcodeContainerViewController()
+            let barcodeScanner = BarcodeScannerViewController()
+            barcodeScanner.codeDelegate = codeDelegate
+            codeDelegate.view = barcodeScanner
+            
+            barcodeScanner.navigationController?.navigationBar.isHidden = false
+            barcodeScanner.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: codeDelegate, action: #selector(codeDelegate.scannerDidLogout))
+            barcodeScanner.navigationItem.hidesBackButton = true
+            
             navigationController.pushViewController(barcodeScanner, animated: true)
             navigationController.navigationBar.isHidden = false
         } else {
