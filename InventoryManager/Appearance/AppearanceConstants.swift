@@ -21,6 +21,8 @@ public enum Color {
     static let violet = UIColor(red: 92.0 / 255.0, green: 39.0 / 255.0, blue: 81.0 / 255.0, alpha: 1)
     static let lavender = UIColor(red: 157.0 / 255.0, green: 172.0 / 255.0, blue: 255.0 / 255.0, alpha: 1)
     static let brightBlue = UIColor(red: 118.0 / 255.0, green: 229.0 / 255.0, blue: 252.0 / 255.0, alpha: 1)
+    static let darkGray: UIColor = .darkGray
+    static let white: UIColor = .white
 }
 
 public enum CornerRadius {

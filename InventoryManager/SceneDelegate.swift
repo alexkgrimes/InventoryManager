@@ -30,10 +30,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             codeDelegate.view = barcodeScanner
             
             barcodeScanner.navigationController?.navigationBar.isHidden = false
-            barcodeScanner.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: codeDelegate, action: #selector(codeDelegate.scannerDidLogout))
+            barcodeScanner.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: codeDelegate, action: #selector(codeDelegate.scannerDidLogout))
             barcodeScanner.navigationItem.hidesBackButton = true
             
             navigationController.pushViewController(barcodeScanner, animated: true)
+            
+            navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            navigationController.navigationBar.shadowImage = UIImage()
+            navigationController.navigationBar.isTranslucent = true
+            
+            navigationController.navigationBar.tintColor = Color.lightBlue
+            
             navigationController.navigationBar.isHidden = false
         } else {
             navigationController.navigationBar.isHidden = true

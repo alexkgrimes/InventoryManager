@@ -24,6 +24,7 @@ class BarcodeDelegate {
 
 extension BarcodeDelegate: AuthControllerLogout {
     func signOut() {
+        view?.navigationController?.navigationBar.isHidden = true
         view?.navigationController?.popViewController(animated: true)
     }
 }

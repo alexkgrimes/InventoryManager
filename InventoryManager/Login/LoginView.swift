@@ -35,6 +35,7 @@ class LoginViewController: UIViewController {
         label.font = UIFont(name: Constants.titleFontName, size: 100)
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
+        label.textColor = Color.white
         return label
     }()
     
@@ -125,7 +126,7 @@ class LoginViewController: UIViewController {
         
         view.addSubview(label)
         view.addSubview(loginView)
-        view.backgroundColor = .white
+        view.backgroundColor = Color.darkGray
         
         setConstraints()
     }
@@ -227,10 +228,17 @@ extension LoginViewController: LoginControllerOutput {
         
         if let navigationController = navigationController {
             barcodeScanner.navigationController?.navigationBar.isHidden = false
-            barcodeScanner.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: codeDelegate, action: #selector(codeDelegate.scannerDidLogout))
+            barcodeScanner.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: codeDelegate, action: #selector(codeDelegate.scannerDidLogout))
             barcodeScanner.navigationItem.hidesBackButton = true
             
             navigationController.pushViewController(barcodeScanner, animated: true)
+            
+            navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            navigationController.navigationBar.shadowImage = UIImage()
+            navigationController.navigationBar.isTranslucent = true
+            
+            navigationController.navigationBar.tintColor = Color.lightBlue
+            
             navigationController.navigationBar.isHidden = false
         }
     }
