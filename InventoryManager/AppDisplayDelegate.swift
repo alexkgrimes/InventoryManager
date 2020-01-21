@@ -20,43 +20,42 @@ class AppDisplayDelegate {
     }
     
     func appStartUp() {
-        let rootViewController = LoginViewController()
-        rootViewController.appDisplayDelegate = self
-        navigationController?.setViewControllers([rootViewController], animated: true)
         
         if AuthController.isSignedIn {
             let barcodeScanner = BarcodeScannerViewController()
-            barcodeScanner.codeDelegate = codeDelegate
-            codeDelegate.view = barcodeScanner
-            
-            barcodeScanner.navigationController?.navigationBar.isHidden = false
-            barcodeScanner.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: codeDelegate, action: #selector(codeDelegate.scannerDidLogout))
-            barcodeScanner.navigationItem.hidesBackButton = true
-            
-            navigationController?.pushViewController(barcodeScanner, animated: true)
-            
-            navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-            navigationController?.navigationBar.shadowImage = UIImage()
-            navigationController?.navigationBar.isTranslucent = true
-            
-            navigationController?.navigationBar.tintColor = Color.lightBlue
-            
-            navigationController?.navigationBar.isHidden = false
+            navigationController?.setViewControllers([barcodeScanner], animated: true)
+            setUpBarcodeScanner(barcodeScanner)
         } else {
-            navigationController?.navigationBar.isHidden = true
+            routeToLogIn()
         }
     }
     
     func routeToBarcodeScanner() {
         let barcodeScanner = BarcodeScannerViewController()
-        codeDelegate.view = barcodeScanner
-        barcodeScanner.codeDelegate = codeDelegate
+        setUpBarcodeScanner(barcodeScanner)
+        navigationController?.pushViewController(barcodeScanner, animated: true)
+    }
+    
+    func routeToLogIn() {
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.popToRootViewController(animated: false)
         
-        barcodeScanner.navigationController?.navigationBar.isHidden = false
+        let rootViewController = LoginViewController()
+        rootViewController.appDisplayDelegate = self
+        navigationController?.setViewControllers([rootViewController], animated: false)
+    }
+}
+
+// MARK: - Private
+
+private extension AppDisplayDelegate {
+    func setUpBarcodeScanner(_ barcodeScanner: BarcodeScannerViewController) {
+        barcodeScanner.codeDelegate = codeDelegate
+        codeDelegate.view = barcodeScanner
+        
+        navigationController?.navigationBar.isHidden = false
         barcodeScanner.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: codeDelegate, action: #selector(codeDelegate.scannerDidLogout))
         barcodeScanner.navigationItem.hidesBackButton = true
-        
-        navigationController?.pushViewController(barcodeScanner, animated: true)
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -65,10 +64,5 @@ class AppDisplayDelegate {
         navigationController?.navigationBar.tintColor = Color.lightBlue
         
         navigationController?.navigationBar.isHidden = false
-    }
-    
-    func routeToLogIn() {
-        navigationController?.navigationBar.isHidden = true
-        navigationController?.popViewController(animated: true)
     }
 }

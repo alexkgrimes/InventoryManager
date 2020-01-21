@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
     }
 }
 
+// MARK: - LoginViewOutput
+
 extension LoginViewController: LoginViewOutput {
     func signUpButtonTapped(email: String, password: String) {
         if !emailIsValid(email) {
