@@ -16,6 +16,7 @@ class AppDisplayDelegate {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        codeDelegate.appDisplayDelegate = self
     }
     
     func appStartUp() {
@@ -64,5 +65,10 @@ class AppDisplayDelegate {
         navigationController?.navigationBar.tintColor = Color.lightBlue
         
         navigationController?.navigationBar.isHidden = false
+    }
+    
+    func routeToLogIn() {
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.popViewController(animated: true)
     }
 }

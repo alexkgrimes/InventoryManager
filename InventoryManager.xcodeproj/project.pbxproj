@@ -22,7 +22,7 @@
 		FAB37CB523A08D4C008632B7 /* AppearanceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB37CB423A08D4C008632B7 /* AppearanceConstants.swift */; };
 		FAB37CB723A093A0008632B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB37CB623A093A0008632B7 /* GoogleService-Info.plist */; };
 		FAB37CBA23A5ED1F008632B7 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB37CB923A5ED1F008632B7 /* Strings.swift */; };
-		FAF6007B239F15A500213B07 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF6007A239F15A500213B07 /* LoginController.swift */; };
+		FAF6007B239F15A500213B07 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF6007A239F15A500213B07 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,7 @@
 		FAB37CB623A093A0008632B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAB37CB823A095E8008632B7 /* InventoryManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InventoryManager.entitlements; sourceTree = "<group>"; };
 		FAB37CB923A5ED1F008632B7 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		FAF6007A239F15A500213B07 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		FAF6007A239F15A500213B07 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				FAB2B9FF238B68C6000F315B /* LoginView.swift */,
-				FAF6007A239F15A500213B07 /* LoginController.swift */,
+				FAF6007A239F15A500213B07 /* LoginViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -363,7 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAB2BA00238B68C6000F315B /* LoginView.swift in Sources */,
-				FAF6007B239F15A500213B07 /* LoginController.swift in Sources */,
+				FAF6007B239F15A500213B07 /* LoginViewController.swift in Sources */,
 				FAB37CBA23A5ED1F008632B7 /* Strings.swift in Sources */,
 				FAB2B9FC238B68C6000F315B /* AppDelegate.swift in Sources */,
 				FAB37CB523A08D4C008632B7 /* AppearanceConstants.swift in Sources */,

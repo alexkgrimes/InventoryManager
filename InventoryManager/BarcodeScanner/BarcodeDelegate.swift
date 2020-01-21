@@ -12,6 +12,7 @@ import BarcodeScanner
 class BarcodeDelegate {
     
     var view: BarcodeScannerViewController?
+    var appDisplayDelegate: AppDisplayDelegate?
     
     init(view: BarcodeScannerViewController?) {
         self.view = view
@@ -24,8 +25,7 @@ class BarcodeDelegate {
 
 extension BarcodeDelegate: AuthControllerLogout {
     func signOut() {
-        view?.navigationController?.navigationBar.isHidden = true
-        view?.navigationController?.popViewController(animated: true)
+        appDisplayDelegate?.routeToLogIn()
     }
 }
 

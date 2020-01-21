@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  LoginView.swift
 //  InventoryManager
 //
 //  Created by Alex Grimes on 11/24/19.
@@ -9,17 +9,14 @@
 import UIKit
 import BarcodeScanner
 
-protocol LoginViewControllerOutput {
+protocol LoginViewOutput {
     func signUpButtonTapped(email: String, password: String)
     func loginButtonTapped(email: String, password: String)
 }
 
-class LoginViewController: UIViewController {
+class LoginView: UIView {
     
-    var output: LoginController?
-    var appDisplayDelegate: AppDisplayDelegate?
-    
-    let codeDelegate = BarcodeDelegate(view: nil)
+    var output: LoginViewController?
     
     private enum Constants {
         static let loginText = "Login"
@@ -107,9 +104,8 @@ class LoginViewController: UIViewController {
     
     // MARK: - View Lifecycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        output = LoginController(view: self)
+    override func layoutSubviews() {
+        super.layoutSubviews()
 
         loginView.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -125,29 +121,31 @@ class LoginViewController: UIViewController {
         loginView.backgroundColor = Color.lightBlue
         loginView.layer.cornerRadius = CornerRadius.medium
         
-        view.addSubview(label)
-        view.addSubview(loginView)
-        view.backgroundColor = Color.darkGray
+        addSubview(label)
+        addSubview(loginView)
+        backgroundColor = Color.darkGray
         
         setConstraints()
     }
 }
 
-private extension LoginViewController {
+// MARK: - Private
+
+private extension LoginView {
     
     func setConstraints() {
         
         NSLayoutConstraint.activate([
-            loginView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Spacing.sixteen),
-            loginView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Spacing.sixteen),
-            loginView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -60),
-            loginView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3)
+            loginView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.sixteen),
+            loginView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.sixteen),
+            loginView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            loginView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -60),
+            loginView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)
         ])
         
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             label.bottomAnchor.constraint(equalTo: loginView.topAnchor, constant: -Spacing.sixteen)
         ])
         
@@ -166,9 +164,9 @@ private extension LoginViewController {
     }
 }
 
-extension LoginViewController {
+extension LoginView {
     @objc func signUpButtonTapped() {
-        view.endEditing(true)
+        endEditing(true)
         guard let email = emailTextField.text, let password = passwordTextField.text else {
             return
         }
@@ -176,53 +174,10 @@ extension LoginViewController {
     }
     
     @objc func loginButtonTapped() {
-        view.endEditing(true)
+        endEditing(true)
         guard let email = emailTextField.text, let password = passwordTextField.text else {
             return
         }
         output?.loginButtonTapped(email: email, password: password)
-    }
-}
-
-extension LoginViewController: LoginControllerOutput {
-    
-    func presentPasswordNotValid() {
-        let alert = UIAlertController(title: ErrorStrings.invalidPassword,
-                                      message: ErrorStrings.invalidPasswordMessage,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Strings.ok, style: .default))
-
-        present(alert, animated: true)
-    }
-    
-    func presentEmailNotValid() {
-        let alert = UIAlertController(title: ErrorStrings.invalidEmail,
-                                      message: ErrorStrings.invalidEmailMessage,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Strings.ok, style: .default))
-
-        present(alert, animated: true)
-    }
-    
-    func signInFailed() {
-        let alert = UIAlertController(title: ErrorStrings.signInFailed,
-                                      message: ErrorStrings.signInFailedMessage,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Strings.ok, style: .default))
-        
-        self.present(alert, animated: true)
-    }
-    
-    func createUserFailed() {
-        let alert = UIAlertController(title: ErrorStrings.createUserFailed,
-                                      message: ErrorStrings.createUserFailedMessage,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Strings.ok, style: .default))
-        
-        self.present(alert, animated: true)
-    }
-    
-    func signInSuccess() {
-        appDisplayDelegate?.routeToBarcodeScanner()
     }
 }
