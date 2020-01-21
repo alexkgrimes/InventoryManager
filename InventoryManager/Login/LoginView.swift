@@ -17,6 +17,7 @@ protocol LoginViewControllerOutput {
 class LoginViewController: UIViewController {
     
     var output: LoginController?
+    var appDisplayDelegate: AppDisplayDelegate?
     
     let codeDelegate = BarcodeDelegate(view: nil)
     
@@ -222,24 +223,6 @@ extension LoginViewController: LoginControllerOutput {
     }
     
     func signInSuccess() {
-        let barcodeScanner = BarcodeScannerViewController()
-        codeDelegate.view = barcodeScanner
-        barcodeScanner.codeDelegate = codeDelegate
-        
-        if let navigationController = navigationController {
-            barcodeScanner.navigationController?.navigationBar.isHidden = false
-            barcodeScanner.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: codeDelegate, action: #selector(codeDelegate.scannerDidLogout))
-            barcodeScanner.navigationItem.hidesBackButton = true
-            
-            navigationController.pushViewController(barcodeScanner, animated: true)
-            
-            navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-            navigationController.navigationBar.shadowImage = UIImage()
-            navigationController.navigationBar.isTranslucent = true
-            
-            navigationController.navigationBar.tintColor = Color.lightBlue
-            
-            navigationController.navigationBar.isHidden = false
-        }
+        appDisplayDelegate?.routeToBarcodeScanner()
     }
 }

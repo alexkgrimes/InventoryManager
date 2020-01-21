@@ -11,6 +11,7 @@
 		C1F09F0FC3DC524047A7B893 /* Pods_InventoryManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908DA49DD84A73AFB8046D24 /* Pods_InventoryManagerTests.framework */; };
 		FA1E118D239F21520033104F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E118C239F21520033104F /* User.swift */; };
 		FA1E1191239F25BD0033104F /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E1190239F25BD0033104F /* AuthenticationController.swift */; };
+		FA77503A23D6A26B0096BB0C /* AppDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA77503923D6A26B0096BB0C /* AppDisplayDelegate.swift */; };
 		FAABE3E923B82CCE006EA1F4 /* BarcodeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAABE3E823B82CCE006EA1F4 /* BarcodeDelegate.swift */; };
 		FAB2B9FC238B68C6000F315B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FB238B68C6000F315B /* AppDelegate.swift */; };
 		FAB2B9FE238B68C6000F315B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FD238B68C6000F315B /* SceneDelegate.swift */; };
@@ -43,6 +44,7 @@
 		F56A9B430FD8AE8E1A7EFB5E /* Pods-InventoryManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventoryManagerTests.release.xcconfig"; path = "Target Support Files/Pods-InventoryManagerTests/Pods-InventoryManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 		FA1E118C239F21520033104F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FA1E1190239F25BD0033104F /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
+		FA77503923D6A26B0096BB0C /* AppDisplayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDisplayDelegate.swift; sourceTree = "<group>"; };
 		FAABE3E823B82CCE006EA1F4 /* BarcodeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDelegate.swift; sourceTree = "<group>"; };
 		FAB2B9F8238B68C6000F315B /* InventoryManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventoryManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB2B9FB238B68C6000F315B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				FAB2BA06238B68CB000F315B /* LaunchScreen.storyboard */,
 				FAB2BA09238B68CB000F315B /* Info.plist */,
 				FAB37CB623A093A0008632B7 /* GoogleService-Info.plist */,
+				FA77503923D6A26B0096BB0C /* AppDisplayDelegate.swift */,
 			);
 			path = InventoryManager;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				FAABE3E923B82CCE006EA1F4 /* BarcodeDelegate.swift in Sources */,
 				FA1E118D239F21520033104F /* User.swift in Sources */,
 				FAB2B9FE238B68C6000F315B /* SceneDelegate.swift in Sources */,
+				FA77503A23D6A26B0096BB0C /* AppDisplayDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

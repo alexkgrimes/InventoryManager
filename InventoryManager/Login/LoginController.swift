@@ -18,6 +18,7 @@ protocol LoginControllerOutput {
 
 class LoginController {
     var view: LoginControllerOutput
+    var appDisplayDelegate: AppDisplayDelegate?
     
     init(view: LoginViewController) {
         self.view = view

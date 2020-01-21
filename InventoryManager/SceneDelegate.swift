@@ -12,8 +12,7 @@ import BarcodeScanner
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    
-    let codeDelegate = BarcodeDelegate(view: nil)
+    var appDisplayDelegate: AppDisplayDelegate?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -22,33 +21,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let rootViewController = LoginViewController()
-        let navigationController = UINavigationController(rootViewController: rootViewController)
-        if AuthController.isSignedIn {
-            let barcodeScanner = BarcodeScannerViewController()
-            barcodeScanner.codeDelegate = codeDelegate
-            codeDelegate.view = barcodeScanner
-            
-            barcodeScanner.navigationController?.navigationBar.isHidden = false
-            barcodeScanner.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: codeDelegate, action: #selector(codeDelegate.scannerDidLogout))
-            barcodeScanner.navigationItem.hidesBackButton = true
-            
-            navigationController.pushViewController(barcodeScanner, animated: true)
-            
-            navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
-            navigationController.navigationBar.shadowImage = UIImage()
-            navigationController.navigationBar.isTranslucent = true
-            
-            navigationController.navigationBar.tintColor = Color.lightBlue
-            
-            navigationController.navigationBar.isHidden = false
-        } else {
-            navigationController.navigationBar.isHidden = true
-        }
-        
+        let navigationController = UINavigationController()
         window.rootViewController = navigationController
         self.window = window
         window.makeKeyAndVisible()
+        
+        appDisplayDelegate = AppDisplayDelegate(navigationController: navigationController)
+        appDisplayDelegate?.appStartUp()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
