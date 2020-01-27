@@ -23,6 +23,11 @@ class LoginView: UIView {
         static let signUpText = "Sign Up"
         static let titleFontName = "Marker Felt"
         static let titleText = "Inventory Manager"
+        static let emailPlaceholder = "Email"
+        static let passwordPlaceholder = "Password"
+        
+        static let titleFontSize: CGFloat = 100
+        static let textfieldFontSize: CGFloat = 15
     }
     
     // MARK: - Properties
@@ -30,16 +35,17 @@ class LoginView: UIView {
     let label: UILabel = {
         let label = UILabel()
         label.text = Constants.titleText
-        label.font = UIFont(name: Constants.titleFontName, size: 100)
+        label.font = UIFont(name: Constants.titleFontName, size: Constants.titleFontSize)
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         label.textColor = Color.white
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let emailTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Email"
+        textField.placeholder = Constants.emailPlaceholder
         textField.font = UIFont.systemFont(ofSize: 15)
         textField.borderStyle = .roundedRect
         textField.autocorrectionType = .no
@@ -51,8 +57,8 @@ class LoginView: UIView {
     
     let passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Password"
-        textField.font = UIFont.systemFont(ofSize: 15)
+        textField.placeholder = Constants.passwordPlaceholder
+        textField.font = UIFont.systemFont(ofSize: Constants.textfieldFontSize)
         textField.borderStyle = .roundedRect
         textField.autocorrectionType = .no
         textField.keyboardType = .default
@@ -108,7 +114,6 @@ class LoginView: UIView {
         super.layoutSubviews()
 
         loginView.translatesAutoresizingMaskIntoConstraints = false
-        label.translatesAutoresizingMaskIntoConstraints = false
         
         hStack.addArrangedSubview(loginButton)
         hStack.addArrangedSubview(signUpButton)
@@ -144,8 +149,8 @@ private extension LoginView {
         ])
         
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.twentyFour),
+            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.twentyFour),
             label.bottomAnchor.constraint(equalTo: loginView.topAnchor, constant: -Spacing.sixteen)
         ])
         

@@ -13,6 +13,7 @@ public enum Spacing {
     static let eight: CGFloat = 8
     static let twelve: CGFloat = 12
     static let sixteen: CGFloat = 16
+    static let twentyFour: CGFloat = 24
 }
 
 public enum Color {

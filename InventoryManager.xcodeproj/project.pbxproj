@@ -11,6 +11,10 @@
 		C1F09F0FC3DC524047A7B893 /* Pods_InventoryManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908DA49DD84A73AFB8046D24 /* Pods_InventoryManagerTests.framework */; };
 		FA1E118D239F21520033104F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E118C239F21520033104F /* User.swift */; };
 		FA1E1191239F25BD0033104F /* AuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E1190239F25BD0033104F /* AuthenticationController.swift */; };
+		FA39A22F23DD4C68008148B3 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA39A22E23DD4C68008148B3 /* DataController.swift */; };
+		FA39A23123DD4E17008148B3 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA39A23023DD4E17008148B3 /* Product.swift */; };
+		FA39A23423DE7720008148B3 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA39A23323DE7720008148B3 /* ProductViewController.swift */; };
+		FA39A23623DE7737008148B3 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA39A23523DE7737008148B3 /* ProductView.swift */; };
 		FA77503A23D6A26B0096BB0C /* AppDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA77503923D6A26B0096BB0C /* AppDisplayDelegate.swift */; };
 		FAABE3E923B82CCE006EA1F4 /* BarcodeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAABE3E823B82CCE006EA1F4 /* BarcodeDelegate.swift */; };
 		FAB2B9FC238B68C6000F315B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FB238B68C6000F315B /* AppDelegate.swift */; };
@@ -44,6 +48,10 @@
 		F56A9B430FD8AE8E1A7EFB5E /* Pods-InventoryManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InventoryManagerTests.release.xcconfig"; path = "Target Support Files/Pods-InventoryManagerTests/Pods-InventoryManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 		FA1E118C239F21520033104F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FA1E1190239F25BD0033104F /* AuthenticationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationController.swift; sourceTree = "<group>"; };
+		FA39A22E23DD4C68008148B3 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		FA39A23023DD4E17008148B3 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		FA39A23323DE7720008148B3 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		FA39A23523DE7737008148B3 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		FA77503923D6A26B0096BB0C /* AppDisplayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDisplayDelegate.swift; sourceTree = "<group>"; };
 		FAABE3E823B82CCE006EA1F4 /* BarcodeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDelegate.swift; sourceTree = "<group>"; };
 		FAB2B9F8238B68C6000F315B /* InventoryManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventoryManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,16 +115,43 @@
 			isa = PBXGroup;
 			children = (
 				FA1E118C239F21520033104F /* User.swift */,
+				FA39A23023DD4E17008148B3 /* Product.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		FA1E118F239F25A00033104F /* Authentication */ = {
+		FA1E118F239F25A00033104F /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
 				FA1E1190239F25BD0033104F /* AuthenticationController.swift */,
+				FA39A22E23DD4C68008148B3 /* DataController.swift */,
 			);
-			path = Authentication;
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		FA39A23223DE76A5008148B3 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				FA39A23523DE7737008148B3 /* ProductView.swift */,
+				FA39A23323DE7720008148B3 /* ProductViewController.swift */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		FA77503B23D7D6140096BB0C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				FAB2B9FB238B68C6000F315B /* AppDelegate.swift */,
+				FAB2B9FD238B68C6000F315B /* SceneDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		FA77503D23D7D7570096BB0C /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WebService;
 			sourceTree = "<group>";
 		};
 		FAABE3E723B82C88006EA1F4 /* BarcodeScanner */ = {
@@ -152,17 +187,18 @@
 			children = (
 				FAB37CB823A095E8008632B7 /* InventoryManager.entitlements */,
 				FAB37CB323A08D37008632B7 /* Appearance */,
-				FA1E118F239F25A00033104F /* Authentication */,
 				FAABE3E723B82C88006EA1F4 /* BarcodeScanner */,
-				FA1E118E239F21580033104F /* Models */,
+				FA77503B23D7D6140096BB0C /* Core */,
+				FA39A23223DE76A5008148B3 /* Product */,
+				FA1E118F239F25A00033104F /* Firebase */,
 				FAF60079239F13E200213B07 /* Login */,
-				FAB2B9FB238B68C6000F315B /* AppDelegate.swift */,
-				FAB2B9FD238B68C6000F315B /* SceneDelegate.swift */,
+				FA1E118E239F21580033104F /* Models */,
+				FA77503D23D7D7570096BB0C /* WebService */,
 				FAB2BA04238B68CB000F315B /* Assets.xcassets */,
 				FAB2BA06238B68CB000F315B /* LaunchScreen.storyboard */,
-				FAB2BA09238B68CB000F315B /* Info.plist */,
-				FAB37CB623A093A0008632B7 /* GoogleService-Info.plist */,
 				FA77503923D6A26B0096BB0C /* AppDisplayDelegate.swift */,
+				FAB37CB623A093A0008632B7 /* GoogleService-Info.plist */,
+				FAB2BA09238B68CB000F315B /* Info.plist */,
 			);
 			path = InventoryManager;
 			sourceTree = "<group>";
@@ -364,11 +400,15 @@
 			files = (
 				FAB2BA00238B68C6000F315B /* LoginView.swift in Sources */,
 				FAF6007B239F15A500213B07 /* LoginViewController.swift in Sources */,
+				FA39A23623DE7737008148B3 /* ProductView.swift in Sources */,
 				FAB37CBA23A5ED1F008632B7 /* Strings.swift in Sources */,
 				FAB2B9FC238B68C6000F315B /* AppDelegate.swift in Sources */,
+				FA39A22F23DD4C68008148B3 /* DataController.swift in Sources */,
+				FA39A23123DD4E17008148B3 /* Product.swift in Sources */,
 				FAB37CB523A08D4C008632B7 /* AppearanceConstants.swift in Sources */,
 				FA1E1191239F25BD0033104F /* AuthenticationController.swift in Sources */,
 				FAABE3E923B82CCE006EA1F4 /* BarcodeDelegate.swift in Sources */,
+				FA39A23423DE7720008148B3 /* ProductViewController.swift in Sources */,
 				FA1E118D239F21520033104F /* User.swift in Sources */,
 				FAB2B9FE238B68C6000F315B /* SceneDelegate.swift in Sources */,
 				FA77503A23D6A26B0096BB0C /* AppDisplayDelegate.swift in Sources */,

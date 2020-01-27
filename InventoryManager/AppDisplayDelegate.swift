@@ -44,6 +44,18 @@ class AppDisplayDelegate {
         rootViewController.appDisplayDelegate = self
         navigationController?.setViewControllers([rootViewController], animated: false)
     }
+    
+    func routeToEnterProductView(with product: Product) {
+        let productView = ProductViewController()
+        setUpProductView(productView)
+        navigationController?.present(productView, animated: true, completion: nil)
+    }
+    
+    func routeToEnterProductView(with upc: String) {
+        let productView = ProductViewController()
+        setUpProductView(productView)
+        navigationController?.present(productView, animated: true, completion: nil)
+    }
 }
 
 // MARK: - Private
@@ -52,6 +64,7 @@ private extension AppDisplayDelegate {
     func setUpBarcodeScanner(_ barcodeScanner: BarcodeScannerViewController) {
         barcodeScanner.codeDelegate = codeDelegate
         codeDelegate.view = barcodeScanner
+        codeDelegate.appDisplayDelegate = self
         
         navigationController?.navigationBar.isHidden = false
         barcodeScanner.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: codeDelegate, action: #selector(codeDelegate.scannerDidLogout))
@@ -64,5 +77,9 @@ private extension AppDisplayDelegate {
         navigationController?.navigationBar.tintColor = Color.lightBlue
         
         navigationController?.navigationBar.isHidden = false
+    }
+    
+    func setUpProductView(_ productView: ProductViewController) {
+        productView.appDisplayDelegate = self
     }
 }

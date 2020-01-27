@@ -10,7 +10,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
     var appDisplayDelegate: AppDisplayDelegate?
-    let codeDelegate = BarcodeDelegate(view: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
