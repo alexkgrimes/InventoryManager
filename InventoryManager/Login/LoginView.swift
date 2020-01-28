@@ -106,15 +106,19 @@ class LoginView: UIView {
         return stackView
     }()
     
-    let loginView = UIView()
+    let loginView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = Color.lightBlue
+        view.layer.cornerRadius = CornerRadius.medium
+        return view
+    }()
     
     // MARK: - View Lifecycle
     
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        loginView.translatesAutoresizingMaskIntoConstraints = false
-        
         hStack.addArrangedSubview(loginButton)
         hStack.addArrangedSubview(signUpButton)
         
@@ -123,8 +127,6 @@ class LoginView: UIView {
         vStack.addArrangedSubview(hStack)
         
         loginView.addSubview(vStack)
-        loginView.backgroundColor = Color.lightBlue
-        loginView.layer.cornerRadius = CornerRadius.medium
         
         addSubview(label)
         addSubview(loginView)

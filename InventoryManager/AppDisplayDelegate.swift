@@ -53,8 +53,9 @@ class AppDisplayDelegate {
     
     func routeToEnterProductView(with upc: String) {
         let productView = ProductViewController()
+        let productViewNavigation: UINavigationController = UINavigationController(rootViewController: productView)
         setUpProductView(productView)
-        navigationController?.present(productView, animated: true, completion: nil)
+        navigationController?.present(productViewNavigation, animated: true, completion: nil)
     }
 }
 
@@ -81,5 +82,6 @@ private extension AppDisplayDelegate {
     
     func setUpProductView(_ productView: ProductViewController) {
         productView.appDisplayDelegate = self
+        productView.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "✕", style: .plain, target: productView, action: #selector(productView.didDismiss))
     }
 }
