@@ -37,6 +37,7 @@ extension BarcodeDelegate: AuthControllerLogout {
 
 extension BarcodeDelegate: BarcodeScannerCodeDelegate {
     func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+        controller.resetWithError()
         
         // TODO: remove later, only for debugging
         print("type: \(type)")
@@ -58,7 +59,7 @@ extension BarcodeDelegate: BarcodeScannerCodeDelegate {
 //        let search = "&upc=\(code)"
 //        let urlString = Constants.baseURL + Constants.key + search
 //        guard let url = URL(string: urlString) else { return }
-//        
+//
 //        let session = URLSession.shared
 //        let task = session.dataTask(with: url, completionHandler: { data, response, error in
 //            print("--- DATA ---")
@@ -67,14 +68,15 @@ extension BarcodeDelegate: BarcodeScannerCodeDelegate {
 //            print(response)
 //            print("--- ERROR ---")
 //            print(error)
-//            
+//
 //            // TODO: Handle error
 //            if error != nil {
 //                return
 //            }
 //        })
-//        
+//
 //        task.resume()
+        
        
     }
     

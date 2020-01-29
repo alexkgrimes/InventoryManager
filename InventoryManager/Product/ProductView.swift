@@ -11,6 +11,9 @@ import UIKit
 protocol ProductViewOutput {
     func addButtonTapped()
     func removeButtonTapped()
+    func confirmButtonTapped()
+    func nameTextFieldDidChange(with name: String)
+    func quantityTextFieldDidChange(with quantity: String)
 }
 
 protocol ProductViewInput {
@@ -25,6 +28,7 @@ class ProductView: UIView {
         static let quantityTitle = "Quantity"
         static let removeText = "REMOVE"
         static let addText = "ADD"
+        static let confirmText = "CONFIRM"
     }
     
     struct ViewModel {
@@ -32,11 +36,13 @@ class ProductView: UIView {
         let quantity: String
         let addButtonColor: UIColor
         let removeButtonColor: UIColor
+        let confirmButtonColor: UIColor
         
         static let empty = ViewModel(productName: "",
                                      quantity: String(1),
                                      addButtonColor: .lightGray,
-                                     removeButtonColor: .lightGray)
+                                     removeButtonColor: .lightGray,
+                                     confirmButtonColor: .lightGray)
     }
     
     var output: ProductViewController?
@@ -126,7 +132,15 @@ class ProductView: UIView {
         return stackView
     }()
     
-    
+    let confirmButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(Constants.confirmText, for: .normal)
+        button.titleLabel?.textColor = Color.darkBlue
+        button.layer.cornerRadius = CornerRadius.small
+        button.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
+        return button
+    }()
     
     // MARK: - View Lifecycle
     
@@ -143,8 +157,17 @@ class ProductView: UIView {
         vStack.addArrangedSubview(hStack)
         
         addSubview(vStack)
+        addSubview(confirmButton)
         
         backgroundColor = Color.white
+        
+        nameTextField.delegate = self
+        quantityTextField.delegate = self
+        nameTextField.addTarget(self, action: #selector(nameTextFieldDidChange), for: .editingChanged)
+        quantityTextField.addTarget(self, action: #selector(quantityTextFieldDidChange), for: .editingChanged)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIView.endEditing))
+        addGestureRecognizer(tap)
+        
         
         setConstraints()
     }
@@ -161,6 +184,13 @@ private extension ProductView {
         ])
         
         NSLayoutConstraint.activate([
+            confirmButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.twentyFour),
+            confirmButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.twentyFour),
+            confirmButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Spacing.twentyFour),
+            confirmButton.heightAnchor.constraint(equalToConstant: 60)
+        ])
+        
+        NSLayoutConstraint.activate([
             nameTextField.widthAnchor.constraint(equalTo: vStack.widthAnchor),
             quantityTextField.widthAnchor.constraint(equalTo: vStack.widthAnchor),
             hStack.widthAnchor.constraint(equalTo: vStack.widthAnchor)
@@ -173,6 +203,8 @@ private extension ProductView {
         
         addButton.backgroundColor = viewModel.addButtonColor
         removeButton.backgroundColor = viewModel.removeButtonColor
+        
+        confirmButton.backgroundColor = viewModel.confirmButtonColor
     }
 }
 
@@ -184,12 +216,34 @@ extension ProductView: ProductViewInput {
     }
 }
 
+extension ProductView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
 private extension ProductView {
+    
     @objc func addButtonTapped() {
         output?.addButtonTapped()
     }
     
     @objc func removeButtonTapped() {
         output?.removeButtonTapped()
+    }
+    
+    @objc func confirmButtonTapped() {
+        output?.confirmButtonTapped()
+    }
+    
+    @objc func nameTextFieldDidChange(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        output?.nameTextFieldDidChange(with: text)
+    }
+    
+    @objc func quantityTextFieldDidChange(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        output?.quantityTextFieldDidChange(with: text)
     }
 }

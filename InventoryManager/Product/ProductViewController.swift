@@ -13,8 +13,11 @@ class ProductViewController: UIViewController {
     var appDisplayDelegate: AppDisplayDelegate?
     
     var productName: String?
-    var quantity = 1
+    var quantity: Int? = 1
     var addProduct = false
+    var allFieldsSet: Bool {
+        return (productName != "" && productName != nil) && (quantity != nil && quantity != 0)
+    }
     
     // MARK: - View Lifecycle
     
@@ -36,11 +39,22 @@ class ProductViewController: UIViewController {
     }
     
     func makeViewModel() -> ProductView.ViewModel {
-        if addProduct {
-            return ProductView.ViewModel(productName: productName, quantity: String(quantity), addButtonColor: Color.lightBlue, removeButtonColor: .lightGray)
+        let addButtonColor = addProduct ? Color.lightBlue : .lightGray
+        let removeButtonColor = addProduct ? .lightGray : Color.lightBlue
+        let confirmButtonColor = allFieldsSet ? Color.darkBlue : .lightGray
+        
+        let quantityString: String
+        if let strongQuantity = quantity {
+            quantityString = String(strongQuantity)
         } else {
-            return ProductView.ViewModel(productName: productName, quantity: String(quantity), addButtonColor: .lightGray, removeButtonColor: Color.lightBlue)
+            quantityString = ""
         }
+        
+        return ProductView.ViewModel(productName: productName,
+                                     quantity: quantityString,
+                                     addButtonColor: addButtonColor,
+                                     removeButtonColor: removeButtonColor,
+                                     confirmButtonColor: confirmButtonColor)
         
     }
     
@@ -68,6 +82,26 @@ extension ProductViewController: ProductViewOutput {
             return
         }
         didUpdate()
+    }
+    
+    func confirmButtonTapped() {
+        // code
+    }
+    
+    func nameTextFieldDidChange(with name: String) {
+        productName = name
+        didUpdate()
+    }
+    
+    func quantityTextFieldDidChange(with quantity: String) {
+        defer { didUpdate() }
+        
+        if quantity == "" {
+            self.quantity = nil
+        }
+        
+        guard let intQuantity = Int(quantity) else { return }
+        self.quantity = intQuantity
     }
 }
 

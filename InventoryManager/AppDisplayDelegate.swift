@@ -46,7 +46,7 @@ class AppDisplayDelegate {
     }
     
     func routeToEnterProductView(with product: Product) {
-        let productView = ProductViewController()
+        let productView = ProductViewController(productName: product.name)
         setUpProductView(productView)
         navigationController?.present(productView, animated: true, completion: nil)
     }
