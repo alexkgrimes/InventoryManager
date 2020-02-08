@@ -15,6 +15,7 @@
 		FA39A23123DD4E17008148B3 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA39A23023DD4E17008148B3 /* Product.swift */; };
 		FA39A23423DE7720008148B3 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA39A23323DE7720008148B3 /* ProductViewController.swift */; };
 		FA39A23623DE7737008148B3 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA39A23523DE7737008148B3 /* ProductView.swift */; };
+		FA39A23823EF1B1F008148B3 /* ProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA39A23723EF1B1E008148B3 /* ProductResponse.swift */; };
 		FA77503A23D6A26B0096BB0C /* AppDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA77503923D6A26B0096BB0C /* AppDisplayDelegate.swift */; };
 		FAABE3E923B82CCE006EA1F4 /* BarcodeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAABE3E823B82CCE006EA1F4 /* BarcodeDelegate.swift */; };
 		FAB2B9FC238B68C6000F315B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FB238B68C6000F315B /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		FA39A23023DD4E17008148B3 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		FA39A23323DE7720008148B3 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		FA39A23523DE7737008148B3 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		FA39A23723EF1B1E008148B3 /* ProductResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponse.swift; sourceTree = "<group>"; };
 		FA77503923D6A26B0096BB0C /* AppDisplayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDisplayDelegate.swift; sourceTree = "<group>"; };
 		FAABE3E823B82CCE006EA1F4 /* BarcodeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDelegate.swift; sourceTree = "<group>"; };
 		FAB2B9F8238B68C6000F315B /* InventoryManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventoryManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +118,7 @@
 			children = (
 				FA1E118C239F21520033104F /* User.swift */,
 				FA39A23023DD4E17008148B3 /* Product.swift */,
+				FA39A23723EF1B1E008148B3 /* ProductResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				FAB37CBA23A5ED1F008632B7 /* Strings.swift in Sources */,
 				FAB2B9FC238B68C6000F315B /* AppDelegate.swift in Sources */,
 				FA39A22F23DD4C68008148B3 /* DataController.swift in Sources */,
+				FA39A23823EF1B1F008148B3 /* ProductResponse.swift in Sources */,
 				FA39A23123DD4E17008148B3 /* Product.swift in Sources */,
 				FAB37CB523A08D4C008632B7 /* AppearanceConstants.swift in Sources */,
 				FA1E1191239F25BD0033104F /* AuthenticationController.swift in Sources */,

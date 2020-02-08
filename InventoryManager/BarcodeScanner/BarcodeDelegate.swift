@@ -39,45 +39,8 @@ extension BarcodeDelegate: BarcodeScannerCodeDelegate {
     func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
         controller.resetWithError()
         
-        // TODO: remove later, only for debugging
-        print("type: \(type)")
-        print("code: \(code)")
-        
         // Check the firebase "cache"
         DataController.isUpcInCache(upc: code, found: found, notFound: notFound)
-        
-        // If in "cache" -> go ahead and add it (modal, just the quantity editable)
-        
-        // Else hit the api to find the item
-        
-            // if the api succeeds -> go ahead and add it (modal, just the quantity editable)
-        
-            // else -> present modal with sorry not found title (all fields editable)
-        
-        // ----------------------- hitting the API
-        
-//        let search = "&upc=\(code)"
-//        let urlString = Constants.baseURL + Constants.key + search
-//        guard let url = URL(string: urlString) else { return }
-//
-//        let session = URLSession.shared
-//        let task = session.dataTask(with: url, completionHandler: { data, response, error in
-//            print("--- DATA ---")
-//            print(data)
-//            print("--- RESPONSE ---")
-//            print(response)
-//            print("--- ERROR ---")
-//            print(error)
-//
-//            // TODO: Handle error
-//            if error != nil {
-//                return
-//            }
-//        })
-//
-//        task.resume()
-        
-       
     }
     
     private func found(_ product: Product) {
@@ -85,7 +48,39 @@ extension BarcodeDelegate: BarcodeScannerCodeDelegate {
     }
     
     private func notFound(_ upc: String) {
-        appDisplayDelegate?.routeToEnterProductView(with: upc)
+        let search = "&upc=\(upc)"
+        let urlString = Constants.baseURL + Constants.key + search
+        guard let url = URL(string: urlString) else { return }
+
+        let session = URLSession.shared
+        let task = session.dataTask(with: url, completionHandler: { [weak self] data, response, error in
+            
+            guard error == nil, let data = data, let response = response as? HTTPURLResponse else {
+                // TODO: Handle error, something went wrong
+                return
+            }
+            
+            guard response.statusCode == 200 else {
+                DispatchQueue.main.async {
+                    self?.appDisplayDelegate?.routeToEnterProductView(with: upc)
+                }
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let response = try decoder.decode(ProductResponse.self, from: data)
+                let product = response.product()
+                DispatchQueue.main.async {
+                    self?.appDisplayDelegate?.routeToEnterProductView(with: product)
+                }
+            } catch {
+                // TODO: catch json decoder error
+            }
+        })
+
+        task.resume()
     }
 }
 
