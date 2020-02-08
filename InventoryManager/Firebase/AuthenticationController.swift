@@ -29,6 +29,10 @@ final class AuthController {
         return Auth.auth().currentUser != nil
     }
     
+    static var userId: String? {
+        return Auth.auth().currentUser?.uid
+    }
+    
     static func signIn(output: AuthControllerOutput, _ user: User, password: String) {
         Auth.auth().signIn(withEmail: user.email, password: password) { authUser, signInError in
             if signInError != nil, authUser == nil {
@@ -41,10 +45,12 @@ final class AuthController {
     
     static func signUp(output: AuthControllerOutput, _ user: User, password: String) {
         Auth.auth().createUser(withEmail: user.email, password: password) { authUser, createError in
-            if createError != nil {
+            guard let uid = authUser?.user.uid, createError == nil else {
                 output.createUserFailed()
                 return
             }
+            
+            DataController.addUser(with: uid, email: user.email)
             
             Auth.auth().signIn(withEmail: user.email, password: password) { user, signInError in
                 if signInError != nil, user == nil {

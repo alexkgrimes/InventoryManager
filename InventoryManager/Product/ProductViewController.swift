@@ -13,6 +13,7 @@ class ProductViewController: UIViewController {
     var appDisplayDelegate: AppDisplayDelegate?
     
     var productName: String?
+    var upc: String
     var quantity: Int? = 1
     var addProduct = false
     var allFieldsSet: Bool {
@@ -21,8 +22,14 @@ class ProductViewController: UIViewController {
     
     // MARK: - View Lifecycle
     
-    init(productName: String? = nil) {
-        self.productName = productName
+    init(product: Product) {
+        self.productName = product.name
+        self.upc = product.upc
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    init(upc: String) {
+        self.upc = upc
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -85,7 +92,17 @@ extension ProductViewController: ProductViewOutput {
     }
     
     func confirmButtonTapped() {
-        // code
+        guard let name = productName, allFieldsSet else { return }
+        let product = Product(upc: upc, name: name)
+        DataController.addProductToCache(product: product)
+        
+        if addProduct {
+            
+        } else {
+            
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
     
     func nameTextFieldDidChange(with name: String) {

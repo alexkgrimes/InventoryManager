@@ -46,13 +46,13 @@ class AppDisplayDelegate {
     }
     
     func routeToEnterProductView(with product: Product) {
-        let productView = ProductViewController(productName: product.name)
+        let productView = ProductViewController(product: product)
         setUpProductView(productView)
         navigationController?.present(productView, animated: true, completion: nil)
     }
     
     func routeToEnterProductView(with upc: String) {
-        let productView = ProductViewController()
+        let productView = ProductViewController(upc: upc)
         let productViewNavigation: UINavigationController = UINavigationController(rootViewController: productView)
         setUpProductView(productView)
         navigationController?.present(productViewNavigation, animated: true, completion: nil)
