@@ -96,13 +96,17 @@ extension ProductViewController: ProductViewOutput {
         let product = Product(upc: upc, name: name)
         DataController.addProductToCache(product: product)
         
-        if addProduct {
-            
-        } else {
-            
+        defer { dismiss(animated: true, completion: nil) }
+        guard let uid = AuthController.userId, let quantity = quantity else {
+            // TODO: oops you aren't signed in
+            return
         }
         
-        dismiss(animated: true, completion: nil)
+        if addProduct {
+            DataController.addInventory(for: uid, product: product, quantity: quantity)
+        } else {
+            DataController.removeInventory(for: uid, product: product, quantity: quantity)
+        }
     }
     
     func nameTextFieldDidChange(with name: String) {

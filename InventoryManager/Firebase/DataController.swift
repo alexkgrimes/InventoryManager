@@ -31,12 +31,8 @@ final class DataController {
         productRef.setValue(product.toAnyObject())
     }
     
-    static func addInventory(for user: User, product: Product, quantity: Int) {
-        guard let userId = AuthController.userId else {
-            return
-        }
-        
-        let inventoryRef = usersRef.child("\(userId)/\(product.upc)")
+    static func addInventory(for uid: String, product: Product, quantity: Int) {
+        let inventoryRef = usersRef.child("\(uid)/\(product.upc)")
         inventoryRef.observeSingleEvent(of: .value, with: { snapshot in
             if snapshot.exists() {
                 let postDict = snapshot.value as? [String : AnyObject] ?? [:]
@@ -52,8 +48,25 @@ final class DataController {
         })
     }
     
-    static func removeInventory(for user: User, product: Product, inventory: Int) {
-        
+    static func removeInventory(for uid: String, product: Product, quantity: Int) {
+        let inventoryRef = usersRef.child("\(uid)/\(product.upc)")
+        inventoryRef.observeSingleEvent(of: .value, with: { snapshot in
+            if snapshot.exists() {
+                let postDict = snapshot.value as? [String : AnyObject] ?? [:]
+                guard let currentQuantity = postDict["quantity"] as? Int else {
+                    // TODO: you are adding to a product without quantity
+                    return
+                }
+                let updatedQuantity = currentQuantity - quantity
+                if updatedQuantity < 0 {
+                    // TODO: oops something went wrong bc it says you have no inventory
+                    return
+                }
+                inventoryRef.setValue(["name": product.name, "quantity": updatedQuantity])
+            } else {
+                // TODO: oops you never added this to your inventory, do you want to add now
+            }
+        })
     }
     
     static func addUser(with uid: String, email: String) {

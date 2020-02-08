@@ -38,7 +38,7 @@ class LoginView: UIView {
         label.font = UIFont(name: Constants.titleFontName, size: Constants.titleFontSize)
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
-        label.textColor = Color.white
+        label.textColor = Color.darkBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -130,7 +130,7 @@ class LoginView: UIView {
         
         addSubview(label)
         addSubview(loginView)
-        backgroundColor = Color.darkGray
+        backgroundColor = Color.white
         
         setConstraints()
     }

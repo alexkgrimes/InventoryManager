@@ -33,8 +33,8 @@ final class AuthController {
         return Auth.auth().currentUser?.uid
     }
     
-    static func signIn(output: AuthControllerOutput, _ user: User, password: String) {
-        Auth.auth().signIn(withEmail: user.email, password: password) { authUser, signInError in
+    static func signIn(output: AuthControllerOutput, _ email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { authUser, signInError in
             if signInError != nil, authUser == nil {
                 output.signInFailed()
             } else {
@@ -43,16 +43,16 @@ final class AuthController {
         }
     }
     
-    static func signUp(output: AuthControllerOutput, _ user: User, password: String) {
-        Auth.auth().createUser(withEmail: user.email, password: password) { authUser, createError in
+    static func signUp(output: AuthControllerOutput, _ email: String, password: String) {
+        Auth.auth().createUser(withEmail: email, password: password) { authUser, createError in
             guard let uid = authUser?.user.uid, createError == nil else {
                 output.createUserFailed()
                 return
             }
             
-            DataController.addUser(with: uid, email: user.email)
+            DataController.addUser(with: uid, email: email)
             
-            Auth.auth().signIn(withEmail: user.email, password: password) { user, signInError in
+            Auth.auth().signIn(withEmail: email, password: password) { user, signInError in
                 if signInError != nil, user == nil {
                     output.signInFailed()
                 } else {

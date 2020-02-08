@@ -30,10 +30,7 @@ extension LoginViewController: LoginViewOutput {
             presentPasswordNotValid()
         }
         
-        let name = UIDevice.current.name
-        let user = User(name: name, email: email)
-        
-        AuthController.signUp(output: self, user, password: password)
+        AuthController.signUp(output: self, email, password: password)
     }
     
     func loginButtonTapped(email: String, password: String) {
@@ -45,9 +42,7 @@ extension LoginViewController: LoginViewOutput {
             presentPasswordNotValid()
         }
         
-        let name = UIDevice.current.name
-        let user = User(name: name, email: email)
-        AuthController.signIn(output: self, user, password: password)
+        AuthController.signIn(output: self, email, password: password)
     }
 }
 

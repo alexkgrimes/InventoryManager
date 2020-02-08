@@ -9,10 +9,12 @@
 import Foundation
 
 public struct User: Codable {
+    let uid: String
     let name: String
     let email: String
 
-    public init(name: String, email: String) {
+    public init(uid: String, name: String, email: String) {
+        self.uid = uid
         self.name = name
         self.email = email
     }
