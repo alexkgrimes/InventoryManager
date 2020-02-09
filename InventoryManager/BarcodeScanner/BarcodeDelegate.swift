@@ -55,12 +55,7 @@ extension BarcodeDelegate: BarcodeScannerCodeDelegate {
         let session = URLSession.shared
         let task = session.dataTask(with: url, completionHandler: { [weak self] data, response, error in
             
-            guard error == nil, let data = data, let response = response as? HTTPURLResponse else {
-                // TODO: Handle error, something went wrong
-                return
-            }
-            
-            guard response.statusCode == 200 else {
+            guard error == nil, let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 DispatchQueue.main.async {
                     self?.appDisplayDelegate?.routeToEnterProductView(with: upc)
                 }
@@ -76,7 +71,7 @@ extension BarcodeDelegate: BarcodeScannerCodeDelegate {
                     self?.appDisplayDelegate?.routeToEnterProductView(with: product)
                 }
             } catch {
-                // TODO: catch json decoder error
+                self?.appDisplayDelegate?.routeToEnterProductView(with: upc)
             }
         })
 

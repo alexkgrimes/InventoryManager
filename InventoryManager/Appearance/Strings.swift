@@ -20,10 +20,15 @@ public enum ErrorStrings {
     
     static let createUserFailed = "Failed To Create User"
     static let createUserFailedMessage = "Sorry, there has been an error creating your account. Please recheck your network connection and try again later."
+    
+    static let oops = "Oops!"
+    static let somethingWentWrong = "Something went wrong, please try again."
+    static let notSignedIn = "Looks like you're not signed in, please sign-in to continue."
 }
 
 public enum Strings {
     static let ok = "OK"
+    static let signIn = "Sign In"
 }
 
 public enum Regex {

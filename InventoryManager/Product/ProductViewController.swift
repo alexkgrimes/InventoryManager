@@ -96,9 +96,8 @@ extension ProductViewController: ProductViewOutput {
         let product = Product(upc: upc, name: name)
         DataController.addProductToCache(product: product)
         
-        defer { dismiss(animated: true, completion: nil) }
         guard let uid = AuthController.userId, let quantity = quantity else {
-            // TODO: oops you aren't signed in
+            appDisplayDelegate?.presentNotSignedIn()
             return
         }
         
@@ -107,6 +106,7 @@ extension ProductViewController: ProductViewOutput {
         } else {
             DataController.removeInventory(for: uid, product: product, quantity: quantity)
         }
+        dismiss(animated: true, completion: nil)
     }
     
     func nameTextFieldDidChange(with name: String) {
