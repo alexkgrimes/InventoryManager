@@ -63,6 +63,12 @@ class AppDisplayDelegate {
             navigationController?.present(navigation, animated: true, completion: nil)
         }
     }
+    
+    @objc func openExtrasModal() {
+        let view = UIViewController()
+        view.view.backgroundColor = .white
+        navigationController?.present(view, animated: true, completion: nil)
+    }
 }
 
 // MARK: - Error modals
@@ -94,9 +100,12 @@ private extension AppDisplayDelegate {
         codeDelegate.view = barcodeScanner
         codeDelegate.appDisplayDelegate = self
         
+        // TODO: remove logout when other logout has been implemented
         navigationController?.navigationBar.isHidden = false
         barcodeScanner.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: codeDelegate, action: #selector(codeDelegate.scannerDidLogout))
-        barcodeScanner.navigationItem.hidesBackButton = true
+        // end 
+        
+        setUpBarButtonItem(for: barcodeScanner)
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -105,6 +114,21 @@ private extension AppDisplayDelegate {
         navigationController?.navigationBar.tintColor = Color.lightBlue
         
         navigationController?.navigationBar.isHidden = false
+    }
+    
+    func setUpBarButtonItem(for barcodeScanner: BarcodeScannerViewController) {
+        let button: UIButton = UIButton(type: .custom)
+        button.setImage(UIImage(named: "3lines"), for: .normal)
+        button.addTarget(self, action: "openExtrasModal", for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 50),
+            button.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        barcodeScanner.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        
+        barcodeScanner.navigationItem.hidesBackButton = true
     }
     
     func setUpProductView(_ productView: ProductViewController) {
