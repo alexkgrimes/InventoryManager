@@ -41,13 +41,13 @@ class AppDisplayDelegate {
         navigationController?.navigationBar.isHidden = true
         navigationController?.popToRootViewController(animated: false)
         
-        let rootViewController = LoginViewController()
+        let rootViewController = LoginViewController(appDisplayDelegate: self)
         rootViewController.appDisplayDelegate = self
         navigationController?.setViewControllers([rootViewController], animated: false)
     }
     
     func routeToEnterProductView(with product: Product) {
-        let productView = ProductViewController(product: product)
+        let productView = ProductViewController(appDisplayDelegate: self, product: product)
         productViewNavigationController = UINavigationController(rootViewController: productView)
         setUpProductView(productView)
         if let navigation = productViewNavigationController {
@@ -56,7 +56,7 @@ class AppDisplayDelegate {
     }
     
     func routeToEnterProductView(with upc: String) {
-        let productView = ProductViewController(upc: upc)
+        let productView = ProductViewController(appDisplayDelegate: self, upc: upc)
         productViewNavigationController = UINavigationController(rootViewController: productView)
         setUpProductView(productView)
         if let navigation = productViewNavigationController {
@@ -65,9 +65,10 @@ class AppDisplayDelegate {
     }
     
     @objc func openExtrasModal() {
-        let view = UIViewController()
-        view.view.backgroundColor = .white
-        navigationController?.present(view, animated: true, completion: nil)
+        let extrasView = ExtrasViewController(appDisplayDelegate: self)
+        extrasView.transitioningDelegate = extrasView
+        extrasView.modalPresentationStyle = .custom
+        navigationController?.present(extrasView, animated: true, completion: nil)
     }
 }
 
@@ -132,7 +133,6 @@ private extension AppDisplayDelegate {
     }
     
     func setUpProductView(_ productView: ProductViewController) {
-        productView.appDisplayDelegate = self
         productView.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "✕", style: .plain, target: productView, action: #selector(productView.didDismiss))
     }
 }

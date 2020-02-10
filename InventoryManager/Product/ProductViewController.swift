@@ -10,7 +10,7 @@ import UIKit
 
 class ProductViewController: UIViewController {
     
-    var appDisplayDelegate: AppDisplayDelegate?
+    var appDisplayDelegate: AppDisplayDelegate
     
     var productName: String?
     var upc: String
@@ -22,13 +22,15 @@ class ProductViewController: UIViewController {
     
     // MARK: - View Lifecycle
     
-    init(product: Product) {
+    init(appDisplayDelegate: AppDisplayDelegate, product: Product) {
+        self.appDisplayDelegate = appDisplayDelegate
         self.productName = product.name
         self.upc = product.upc
         super.init(nibName: nil, bundle: nil)
     }
     
-    init(upc: String) {
+    init(appDisplayDelegate: AppDisplayDelegate, upc: String) {
+        self.appDisplayDelegate = appDisplayDelegate
         self.upc = upc
         super.init(nibName: nil, bundle: nil)
     }
@@ -97,7 +99,7 @@ extension ProductViewController: ProductViewOutput {
         DataController.addProductToCache(product: product)
         
         guard let uid = AuthController.userId, let quantity = quantity else {
-            appDisplayDelegate?.presentNotSignedIn()
+            appDisplayDelegate.presentNotSignedIn()
             return
         }
         

@@ -9,7 +9,18 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    var appDisplayDelegate: AppDisplayDelegate?
+    var appDisplayDelegate: AppDisplayDelegate
+    
+    // MARK: - View Lifecycle
+    
+    init(appDisplayDelegate: AppDisplayDelegate) {
+        self.appDisplayDelegate = appDisplayDelegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +80,7 @@ extension LoginViewController: AuthControllerOutput {
     }
     
     func signInSuccess() {
-        appDisplayDelegate?.routeToBarcodeScanner()
+        appDisplayDelegate.routeToBarcodeScanner()
     }
 }
 
