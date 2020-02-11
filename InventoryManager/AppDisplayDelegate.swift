@@ -66,8 +66,6 @@ class AppDisplayDelegate {
     
     @objc func openExtrasModal() {
         let extrasView = ExtrasViewController(appDisplayDelegate: self)
-        extrasView.transitioningDelegate = extrasView
-        extrasView.modalPresentationStyle = .custom
         navigationController?.present(extrasView, animated: true, completion: nil)
     }
 }

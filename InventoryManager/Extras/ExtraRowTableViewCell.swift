@@ -10,6 +10,10 @@ import UIKit
 
 class ExtraRowTableViewCell: UITableViewCell {
     
+    private enum Constants {
+        static let fontName = "Helvetica Neue"
+    }
+    
     // MARK: - Properties
     
     let cellImageView: UIImageView = {
@@ -21,6 +25,7 @@ class ExtraRowTableViewCell: UITableViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
+        label.font = UIFont(name: Constants.fontName, size: 20)
         label.textColor = Color.darkBlue
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -48,16 +53,16 @@ class ExtraRowTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    func apply(title: String, image: UIImage?) {
+        titleLabel.text = title
+        cellImageView.image = image
+    }
 }
 
 // MARK: - Private
 
 private extension ExtraRowTableViewCell {
-    func apply(title: String, image: UIImage?) {
-        titleLabel.text = title
-        cellImageView.image = image
-    }
-    
     func setConstraints() {
         NSLayoutConstraint.activate([
             cellImageView.topAnchor.constraint(equalTo: topAnchor, constant: Spacing.eight),

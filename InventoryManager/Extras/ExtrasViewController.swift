@@ -78,14 +78,9 @@ extension ExtrasViewController: ExtrasViewOutput {
         
         handleRowTapped(with: row)
     }
-}
-
-// MARK: - UIViewControllerTransitioningDelegate
-
-extension ExtrasViewController: UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        let height = CGFloat(titles.count) * Constants.rowHeight
-        return ExtrasPresentationController(presentedViewController: presented, presenting: presenting, height: height)
+    
+    func dismiss() {
+        dismiss(animated: true, completion: nil)
     }
 }
 

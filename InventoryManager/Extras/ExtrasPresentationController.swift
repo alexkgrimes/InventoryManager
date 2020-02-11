@@ -6,6 +6,8 @@
 //  Copyright © 2020 Alex Grimes. All rights reserved.
 //
 
+// TODO: This custom UIPresentationController is not currently being used, but want to come back to it later
+
 import UIKit
 
 class ExtrasPresentationController: UIPresentationController {
@@ -42,8 +44,8 @@ class ExtrasPresentationController: UIPresentationController {
     }
     
     override var frameOfPresentedViewInContainerView: CGRect {
-        return CGRect(origin: CGPoint(x: 0, y: containerView!.frame.height/2),
-                      size: CGSize(width: containerView!.frame.width, height: height ?? containerView!.frame.height/2))
+        return CGRect(origin: CGPoint(x: 0, y: containerView!.frame.height / 2 - 25),
+                      size: CGSize(width: containerView!.frame.width, height: (height ?? containerView!.frame.height / 2) + 35))
     }
     
     override func dismissalTransitionWillBegin() {

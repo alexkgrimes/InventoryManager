@@ -31,6 +31,7 @@
 		FAB37CB523A08D4C008632B7 /* AppearanceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB37CB423A08D4C008632B7 /* AppearanceConstants.swift */; };
 		FAB37CB723A093A0008632B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAB37CB623A093A0008632B7 /* GoogleService-Info.plist */; };
 		FAB37CBA23A5ED1F008632B7 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB37CB923A5ED1F008632B7 /* Strings.swift */; };
+		FAB49A4823F22AEE00712F5B /* ExtrasHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB49A4723F22AEE00712F5B /* ExtrasHeaderView.swift */; };
 		FAF6007B239F15A500213B07 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF6007A239F15A500213B07 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		FAB37CB623A093A0008632B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAB37CB823A095E8008632B7 /* InventoryManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InventoryManager.entitlements; sourceTree = "<group>"; };
 		FAB37CB923A5ED1F008632B7 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		FAB49A4723F22AEE00712F5B /* ExtrasHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtrasHeaderView.swift; sourceTree = "<group>"; };
 		FAF6007A239F15A500213B07 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +174,7 @@
 				FA92572B23F0752D0005C9BD /* ExtrasView.swift */,
 				FA92572D23F0CDB40005C9BD /* ExtrasPresentationController.swift */,
 				FA92572F23F0E4C80005C9BD /* ExtraRowTableViewCell.swift */,
+				FAB49A4723F22AEE00712F5B /* ExtrasHeaderView.swift */,
 			);
 			path = Extras;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				FA39A23823EF1B1F008148B3 /* ProductResponse.swift in Sources */,
 				FA39A23123DD4E17008148B3 /* Product.swift in Sources */,
 				FAB37CB523A08D4C008632B7 /* AppearanceConstants.swift in Sources */,
+				FAB49A4823F22AEE00712F5B /* ExtrasHeaderView.swift in Sources */,
 				FA1E1191239F25BD0033104F /* AuthenticationController.swift in Sources */,
 				FAABE3E923B82CCE006EA1F4 /* BarcodeDelegate.swift in Sources */,
 				FA92572A23F0751D0005C9BD /* ExtrasViewController.swift in Sources */,
