@@ -19,6 +19,11 @@ class ExtrasViewController: UIViewController {
         
         static let rowHeight: CGFloat = 65.0
         static let placeholderImage = UIImage(named: "actionFiller")
+        static let alertImage = UIImage(named: "alert")
+        static let reportImage = UIImage(named: "report")
+        static let profileImage = UIImage(named: "profile")
+        static let passwordImage = UIImage(named: "password")
+        static let logoutImage = UIImage(named: "logout")
     }
     
     private enum ExtraRow {
@@ -37,11 +42,11 @@ class ExtrasViewController: UIViewController {
                   Constants.viewProfile,
                   Constants.changePassword,
                   Constants.logout]
-    var images = [Constants.placeholderImage,
-                  Constants.placeholderImage,
-                  Constants.placeholderImage,
-                  Constants.placeholderImage,
-                  Constants.placeholderImage]
+    var images = [Constants.alertImage,
+                  Constants.reportImage,
+                  Constants.profileImage,
+                  Constants.passwordImage,
+                  Constants.logoutImage]
     
     // MARK: - View Lifecycle
     
