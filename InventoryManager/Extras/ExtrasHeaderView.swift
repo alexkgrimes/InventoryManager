@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExtrasHeaderView: UITableViewHeaderFooterView {
+class ExtrasHeaderView: UIView {
 
     // MARK: - Properties
     
@@ -22,8 +22,7 @@ class ExtrasHeaderView: UITableViewHeaderFooterView {
     override func layoutSubviews() {
         super.layoutSubviews()
     
-        contentView.backgroundColor = .clear
-        backgroundColor = .clear
+        backgroundColor = .white
         
         addSubview(barImageView)
         NSLayoutConstraint.activate([

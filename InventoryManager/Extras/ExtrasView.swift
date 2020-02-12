@@ -36,6 +36,12 @@ class ExtrasView: UIView {
 
     // MARK: - Properties
     
+    let topView: ExtrasHeaderView = {
+        let view = ExtrasHeaderView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .plain)
         table.separatorStyle = .none
@@ -51,9 +57,9 @@ class ExtrasView: UIView {
         backgroundColor = .white
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ExtraRowTableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.register(ExtrasHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
+        tableView.register(ExtraRowTableViewCell.self, forCellReuseIdentifier: "cell")	
         
+        addSubview(topView)
         addSubview(tableView)
         setConstraints()
         
@@ -61,11 +67,11 @@ class ExtrasView: UIView {
         layer.cornerRadius = 10
     
         let bottomInsets = safeAreaInsets.bottom
-        let modalHeight = CGFloat(viewModel.actions.count) * Constants.rowHeight
+        let tableHeight = CGFloat(viewModel.actions.count) * Constants.rowHeight
         let padding = Constants.headerHeight + bottomInsets + Constants.rowHeight
+        let modalHeight = tableHeight + padding
         frame = CGRect(origin: CGPoint(x: 0, y: superview!.frame.height / 2 - padding),
-                       size: CGSize(width: superview!.frame.width, height: modalHeight + padding))
-        superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismiss)))
+                       size: CGSize(width: superview!.frame.width, height: modalHeight))
     }
 }
 
@@ -84,16 +90,6 @@ extension ExtrasView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.rowHeight
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as! ExtrasHeaderView
-        return header
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard section == 0 else { return 0.0 }
-        return Constants.headerHeight
     }
 }
 
@@ -115,7 +111,14 @@ private extension ExtrasView {
     
     func setConstraints() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: topAnchor),
+            topView.topAnchor.constraint(equalTo: topAnchor),
+            topView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            topView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            topView.heightAnchor.constraint(equalToConstant: Constants.headerHeight)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: topView.bottomAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor)
