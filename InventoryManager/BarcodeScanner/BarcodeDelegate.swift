@@ -23,16 +23,6 @@ class BarcodeDelegate {
     init(view: BarcodeScannerViewController?) {
         self.view = view
     }
-    
-    @objc func scannerDidLogout() {
-        AuthController.signOut(output: self)
-    }
-}
-
-extension BarcodeDelegate: AuthControllerLogout {
-    func signOut() {
-        appDisplayDelegate?.routeToLogIn()
-    }
 }
 
 extension BarcodeDelegate: BarcodeScannerCodeDelegate {

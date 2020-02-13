@@ -13,6 +13,7 @@ class AppDisplayDelegate {
     
     let navigationController: UINavigationController?
     var productViewNavigationController: UINavigationController?
+    var extrasNavigationController: UINavigationController?
     let codeDelegate = BarcodeDelegate(view: nil)
     
     init(navigationController: UINavigationController) {
@@ -66,7 +67,11 @@ class AppDisplayDelegate {
     
     @objc func openExtrasModal() {
         let extrasView = ExtrasViewController(appDisplayDelegate: self)
-        navigationController?.present(extrasView, animated: true, completion: nil)
+        extrasNavigationController = UINavigationController(rootViewController: extrasView)
+        extrasNavigationController?.navigationBar.isHidden = true
+        if let navigation = extrasNavigationController {
+             navigationController?.present(navigation, animated: true, completion: nil)
+        }
     }
 }
 
@@ -89,6 +94,25 @@ extension AppDisplayDelegate {
         }))
         productViewNavigationController?.viewControllers.first?.present(alert, animated: true)
     }
+    
+    func presentConfirmLogout() {
+        let alert = UIAlertController(title: Strings.areYouSureYouWantToLogOut,
+                                      message: Strings.youWillHaveToEnterEmailAndPassword,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Log Out", style: .default, handler: { action in
+            AuthController.signOut(output: self)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        extrasNavigationController?.viewControllers.first?.present(alert, animated: true)
+    }
+}
+
+extension AppDisplayDelegate: AuthControllerLogout {
+    func signOut() {
+        extrasNavigationController?.viewControllers.first?.dismiss(animated: true) {
+            self.routeToLogIn()
+        }
+    }
 }
 
 // MARK: - Private
@@ -98,11 +122,6 @@ private extension AppDisplayDelegate {
         barcodeScanner.codeDelegate = codeDelegate
         codeDelegate.view = barcodeScanner
         codeDelegate.appDisplayDelegate = self
-        
-        // TODO: remove logout when other logout has been implemented
-        navigationController?.navigationBar.isHidden = false
-        barcodeScanner.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: codeDelegate, action: #selector(codeDelegate.scannerDidLogout))
-        // end 
         
         setUpBarButtonItem(for: barcodeScanner)
         

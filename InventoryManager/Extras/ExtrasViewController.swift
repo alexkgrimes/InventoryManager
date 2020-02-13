@@ -26,13 +26,12 @@ class ExtrasViewController: UIViewController {
         static let logoutImage = UIImage(named: "logout")
     }
     
-    private enum ExtraRow {
-        case viewProfile
-        case requestAReport
-        case changePassword
-        case logOut
-        case setUpAlerts
-        case unknown
+    private enum ExtraRow: Int {
+        case viewProfile = 2
+        case requestAReport = 1
+        case changePassword = 3
+        case logOut = 4
+        case setUpAlerts = 0
     }
     
     var appDisplayDelegate: AppDisplayDelegate
@@ -71,17 +70,21 @@ class ExtrasViewController: UIViewController {
 
 extension ExtrasViewController: ExtrasViewOutput {
     func rowTapped(at index: Int) {
-        let row: ExtraRow
-        switch index {
-            case 0: row = .setUpAlerts
-            case 1: row = .requestAReport
-            case 2: row = .viewProfile
-            case 3: row = .changePassword
-            case 4: row = .logOut
-            default: row = .unknown
+        let row = ExtraRow(rawValue: index)
+        switch row {
+        case .setUpAlerts:
+            handleSetUpAlerts()
+        case .requestAReport:
+            handleRequestAReport()
+        case .viewProfile:
+            handleViewProfile()
+        case .changePassword:
+            handleChangePassword()
+        case .logOut:
+            handleLogOut()
+        default:
+            return
         }
-        
-        handleRowTapped(with: row)
     }
     
     func dismiss() {
@@ -92,12 +95,33 @@ extension ExtrasViewController: ExtrasViewOutput {
 // MARK: - Private
 
 private extension ExtrasViewController {
-    private func handleRowTapped(with row: ExtraRow) {
-        // TODO: handle this correctly
-        print(row)
+    func handleSetUpAlerts() {
+        
+    }
+    
+    func handleRequestAReport() {
+        
+    }
+    
+    func handleViewProfile() {
+        
+    }
+    
+    func handleChangePassword() {
+        
+    }
+    
+    func handleLogOut() {
+        appDisplayDelegate.presentConfirmLogout()
     }
     
     func makeViewModel() -> ExtrasView.ViewModel {
         return ExtrasView.ViewModel(actions: titles, images: images)
+    }
+}
+
+extension ExtrasViewController: AuthControllerLogout {
+    func signOut() {
+        appDisplayDelegate.routeToLogIn()
     }
 }

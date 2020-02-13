@@ -91,6 +91,11 @@ extension ExtrasView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.rowHeight
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        output?.rowTapped(at: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 // MARK: - ExtrasViewInput

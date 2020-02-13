@@ -29,6 +29,9 @@ public enum ErrorStrings {
 public enum Strings {
     static let ok = "OK"
     static let signIn = "Sign In"
+    
+    static let areYouSureYouWantToLogOut = "Are you sure you want to Log Out?"
+    static let youWillHaveToEnterEmailAndPassword = "You will have to enter your email and password to get access to your inventory."
 }
 
 public enum Regex {
