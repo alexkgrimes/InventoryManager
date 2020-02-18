@@ -1,0 +1,13 @@
+*.xcscheme
+"Pods/Target Support Files/**"
+"Pods/Protobuf/**"
+*.xcbkptlist
+InventoryManager/InventoryManager.entitlements
+Podfile.lock
+Pods/Manifest.lock
+Pods/Pods.xcodeproj/xcuserdata/alex.xcuserdatad/xcschemes/xcschememanagement.plist
+Pods/FirebaseAnalyticsInterop/**
+Pods/FirebaseMessaging/**
+Pods/Headers/Private/FirebaseAnalyticsInterop/**
+Pods/Headers/Public/FirebaseAnalyticsInterop/**
+Pods/Pods.xcodeproj/**
