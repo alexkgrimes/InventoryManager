@@ -16,6 +16,7 @@
 		FA39A23423DE7720008148B3 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA39A23323DE7720008148B3 /* ProductViewController.swift */; };
 		FA39A23623DE7737008148B3 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA39A23523DE7737008148B3 /* ProductView.swift */; };
 		FA39A23823EF1B1F008148B3 /* ProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA39A23723EF1B1E008148B3 /* ProductResponse.swift */; };
+		FA7305D523FCC4DC00277B80 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7305D423FCC4DC00277B80 /* Toast.swift */; };
 		FA77503A23D6A26B0096BB0C /* AppDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA77503923D6A26B0096BB0C /* AppDisplayDelegate.swift */; };
 		FA92572A23F0751D0005C9BD /* ExtrasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92572923F0751D0005C9BD /* ExtrasViewController.swift */; };
 		FA92572C23F0752D0005C9BD /* ExtrasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92572B23F0752D0005C9BD /* ExtrasView.swift */; };
@@ -59,6 +60,7 @@
 		FA39A23323DE7720008148B3 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		FA39A23523DE7737008148B3 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		FA39A23723EF1B1E008148B3 /* ProductResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponse.swift; sourceTree = "<group>"; };
+		FA7305D423FCC4DC00277B80 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		FA77503923D6A26B0096BB0C /* AppDisplayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDisplayDelegate.swift; sourceTree = "<group>"; };
 		FA92572923F0751D0005C9BD /* ExtrasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtrasViewController.swift; sourceTree = "<group>"; };
 		FA92572B23F0752D0005C9BD /* ExtrasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtrasView.swift; sourceTree = "<group>"; };
@@ -151,6 +153,14 @@
 			path = Product;
 			sourceTree = "<group>";
 		};
+		FA7305D323FCC4CE00277B80 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				FA7305D423FCC4DC00277B80 /* Toast.swift */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
 		FA77503B23D7D6140096BB0C /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +229,7 @@
 				FA1E118F239F25A00033104F /* Firebase */,
 				FAF60079239F13E200213B07 /* Login */,
 				FA1E118E239F21580033104F /* Models */,
+				FA7305D323FCC4CE00277B80 /* Toast */,
 				FA77503D23D7D7570096BB0C /* WebService */,
 				FAB2BA04238B68CB000F315B /* Assets.xcassets */,
 				FAB2BA06238B68CB000F315B /* LaunchScreen.storyboard */,
@@ -437,6 +448,7 @@
 				FA39A23123DD4E17008148B3 /* Product.swift in Sources */,
 				FAB37CB523A08D4C008632B7 /* AppearanceConstants.swift in Sources */,
 				FAB49A4823F22AEE00712F5B /* ExtrasHeaderView.swift in Sources */,
+				FA7305D523FCC4DC00277B80 /* Toast.swift in Sources */,
 				FA1E1191239F25BD0033104F /* AuthenticationController.swift in Sources */,
 				FAABE3E923B82CCE006EA1F4 /* BarcodeDelegate.swift in Sources */,
 				FA92572A23F0751D0005C9BD /* ExtrasViewController.swift in Sources */,

@@ -105,6 +105,11 @@ extension AppDisplayDelegate {
         alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
         extrasNavigationController?.viewControllers.first?.present(alert, animated: true)
     }
+    
+    func presentAlertToast() {
+        guard let window = UIApplication.shared.keyWindow else { return }
+        Toast.show(message: "test message", window: window)
+    }
 }
 
 extension AppDisplayDelegate: AuthControllerLogout {
@@ -130,6 +135,7 @@ private extension AppDisplayDelegate {
         navigationController?.navigationBar.isTranslucent = true
         
         navigationController?.navigationBar.tintColor = Color.lightBlue
+        navigationController?.navigationBar.barStyle = .black
         
         navigationController?.navigationBar.isHidden = false
     }
