@@ -33,8 +33,8 @@ extension BarcodeDelegate: BarcodeScannerCodeDelegate {
         DataController.isUpcInCache(upc: code, found: found, notFound: notFound)
     }
     
-    private func found(_ product: Product) {
-        appDisplayDelegate?.routeToEnterProductView(with: product)
+    private func found(_ product: Product, currentQuantity: Int) {
+        appDisplayDelegate?.routeToEnterProductView(with: product, currentQuantity: currentQuantity)
     }
     
     private func notFound(_ upc: String) {
@@ -58,7 +58,7 @@ extension BarcodeDelegate: BarcodeScannerCodeDelegate {
                 let response = try decoder.decode(ProductResponse.self, from: data)
                 let product = response.product()
                 DispatchQueue.main.async {
-                    self?.appDisplayDelegate?.routeToEnterProductView(with: product)
+                    self?.appDisplayDelegate?.routeToEnterProductView(with: product, currentQuantity: 0)
                 }
             } catch {
                 self?.appDisplayDelegate?.routeToEnterProductView(with: upc)

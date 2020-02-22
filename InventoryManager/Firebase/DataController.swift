@@ -15,14 +15,29 @@ final class DataController {
     static let usersRef = Database.database().reference(withPath: "users")
     static let cacheRef = usersRef.child("cache")
     
-    static func isUpcInCache(upc: String, found: @escaping (Product) -> Void, notFound: @escaping (String) -> Void) {
+    static func isUpcInCache(upc: String, found: @escaping (Product, Int) -> Void, notFound: @escaping (String) -> Void) {
         rootRef.child("users/cache/\(upc)").observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.exists() {
-                let product = Product(snapshot: snapshot)
-                found(product)
-            } else {
+            guard snapshot.exists() else {
                 notFound(upc)
+                return
             }
+            
+            let product = Product(snapshot: snapshot)
+            guard let uid = AuthController.userId else { return }
+            
+            rootRef.child("users/\(uid)/\(upc)").observeSingleEvent(of: .value, with: { snapshot1 in
+                guard snapshot1.exists() else {
+                    found(product, 0)
+                    return
+                }
+                
+                let postDict = snapshot1.value as? [String : AnyObject] ?? [:]
+                if let currentQuantity = postDict["quantity"] as? Int {
+                    found(product, currentQuantity)
+                } else {
+                    found(product, 0)
+                }
+            })
         })
     }
     
@@ -34,17 +49,18 @@ final class DataController {
     static func addInventory(for uid: String, product: Product, quantity: Int) {
         let inventoryRef = usersRef.child("\(uid)/\(product.upc)")
         inventoryRef.observeSingleEvent(of: .value, with: { snapshot in
-            if snapshot.exists() {
-                let postDict = snapshot.value as? [String : AnyObject] ?? [:]
-                guard let currentQuantity = postDict["quantity"] as? Int else {
-                    // TODO: error handling here
-                    return
-                }
-                let updatedQuantity = currentQuantity + quantity
-                inventoryRef.setValue(["name": product.name, "quantity": updatedQuantity])
-            } else {
+            guard snapshot.exists() else {
                 inventoryRef.setValue(["name": product.name, "quantity": quantity])
+                return
             }
+            
+            let postDict = snapshot.value as? [String : AnyObject] ?? [:]
+            guard let currentQuantity = postDict["quantity"] as? Int else {
+                // TODO: error handling here
+                return
+            }
+            let updatedQuantity = currentQuantity + quantity
+            inventoryRef.setValue(["name": product.name, "quantity": updatedQuantity])
         })
     }
     

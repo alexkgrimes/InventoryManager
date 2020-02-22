@@ -47,8 +47,8 @@ class AppDisplayDelegate {
         navigationController?.setViewControllers([rootViewController], animated: false)
     }
     
-    func routeToEnterProductView(with product: Product) {
-        let productView = ProductViewController(appDisplayDelegate: self, product: product)
+    func routeToEnterProductView(with product: Product, currentQuantity: Int) {
+        let productView = ProductViewController(appDisplayDelegate: self, product: product, currentQuantity: currentQuantity)
         productViewNavigationController = UINavigationController(rootViewController: productView)
         setUpProductView(productView)
         if let navigation = productViewNavigationController {

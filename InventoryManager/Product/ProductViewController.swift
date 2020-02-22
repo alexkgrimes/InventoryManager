@@ -14,6 +14,7 @@ class ProductViewController: UIViewController {
     
     var productName: String?
     var upc: String
+    var currentQuantity: Int = 0
     var quantity: Int? = 1
     var addProduct = false
     var allFieldsSet: Bool {
@@ -22,10 +23,11 @@ class ProductViewController: UIViewController {
     
     // MARK: - View Lifecycle
     
-    init(appDisplayDelegate: AppDisplayDelegate, product: Product) {
+    init(appDisplayDelegate: AppDisplayDelegate, product: Product, currentQuantity: Int) {
         self.appDisplayDelegate = appDisplayDelegate
         self.productName = product.name
         self.upc = product.upc
+        self.currentQuantity = currentQuantity
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -61,6 +63,7 @@ class ProductViewController: UIViewController {
         
         return ProductView.ViewModel(productName: productName,
                                      quantity: quantityString,
+                                     currentQuantity: String(currentQuantity),
                                      addButtonColor: addButtonColor,
                                      removeButtonColor: removeButtonColor,
                                      confirmButtonColor: confirmButtonColor)
