@@ -16,10 +16,12 @@ class ExtrasViewController: UIViewController {
         static let changePassword = "Change Password"
         static let logout = "Log Out"
         static let setUpAlerts = "Set Up Alerts"
+        static let notifications = "Notifications"
         
         static let rowHeight: CGFloat = 65.0
         static let placeholderImage = UIImage(named: "actionFiller")
         static let alertImage = UIImage(named: "alert")
+        static let notificationImage = UIImage(named: "notification")
         static let reportImage = UIImage(named: "report")
         static let profileImage = UIImage(named: "profile")
         static let passwordImage = UIImage(named: "password")
@@ -28,20 +30,23 @@ class ExtrasViewController: UIViewController {
     
     private enum ExtraRow: Int {
         case viewProfile = 2
-        case requestAReport = 1
-        case changePassword = 3
-        case logOut = 4
+        case requestAReport = 3
+        case changePassword = 4
+        case logOut = 5
         case setUpAlerts = 0
+        case notification = 1
     }
     
     var appDisplayDelegate: AppDisplayDelegate
     
     var titles = [Constants.setUpAlerts,
+                  Constants.notifications,
                   Constants.requestAReport,
                   Constants.viewProfile,
                   Constants.changePassword,
                   Constants.logout]
     var images = [Constants.alertImage,
+                  Constants.notificationImage,
                   Constants.reportImage,
                   Constants.profileImage,
                   Constants.passwordImage,
@@ -82,6 +87,8 @@ extension ExtrasViewController: ExtrasViewOutput {
             handleChangePassword()
         case .logOut:
             handleLogOut()
+        case .notification:
+            handleNotification()
         default:
             return
         }
@@ -108,6 +115,10 @@ private extension ExtrasViewController {
     }
     
     func handleChangePassword() {
+        
+    }
+    
+    func handleNotification() {
         
     }
     

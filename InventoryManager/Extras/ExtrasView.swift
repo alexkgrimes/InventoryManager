@@ -70,7 +70,7 @@ class ExtrasView: UIView {
         let tableHeight = CGFloat(viewModel.actions.count) * Constants.rowHeight
         let padding = Constants.headerHeight + bottomInsets + Constants.rowHeight
         let modalHeight = tableHeight + padding
-        frame = CGRect(origin: CGPoint(x: 0, y: superview!.frame.height / 2 - padding),
+        frame = CGRect(origin: CGPoint(x: 0, y: superview!.frame.height - modalHeight),
                        size: CGSize(width: superview!.frame.width, height: modalHeight))
     }
 }
