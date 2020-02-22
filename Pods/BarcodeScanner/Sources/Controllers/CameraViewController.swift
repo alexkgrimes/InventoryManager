@@ -308,11 +308,11 @@ private extension CameraViewController {
       NSLayoutConstraint.activate(
         flashButton.topAnchor.constraint(
           equalTo: view.safeAreaLayoutGuide.topAnchor,
-          constant: 30
+          constant: 16
         ),
         flashButton.trailingAnchor.constraint(
           equalTo: view.safeAreaLayoutGuide.trailingAnchor,
-          constant: -13
+          constant: -22
         ),
         cameraButton.bottomAnchor.constraint(
           equalTo: view.safeAreaLayoutGuide.bottomAnchor,
@@ -321,8 +321,8 @@ private extension CameraViewController {
       )
     } else {
       NSLayoutConstraint.activate(
-        flashButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
-        flashButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -13),
+        flashButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+        flashButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
         cameraButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30)
       )
     }
