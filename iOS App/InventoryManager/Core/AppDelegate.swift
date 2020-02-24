@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Error fetching remote instance ID: \(error)")
             } else if let result = result {
                 print("Remote instance ID token: \(result.token)")
+                DataController.updateRemoteInstanceID(with: result.token)
             }
         }
         return true

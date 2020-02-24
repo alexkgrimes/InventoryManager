@@ -86,6 +86,14 @@ final class DataController {
     }
     
     static func addUser(with uid: String, email: String) {
-        usersRef.child(uid).setValue(["email": email])
+        let emailRef = usersRef.child("\(uid)/email")
+        emailRef.setValue(email)
+    }
+    
+    static func updateRemoteInstanceID(with notificationToken: String) {
+        guard let userId = AuthController.userId else { return }
+        let notificationTokenRef = usersRef.child("\(userId)/notificationTokens")
+        notificationTokenRef.setValue([notificationToken: ""])
+
     }
 }
