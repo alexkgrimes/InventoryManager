@@ -25,7 +25,7 @@ final class DataController {
             let product = Product(snapshot: snapshot)
             guard let uid = AuthController.userId else { return }
             
-            rootRef.child("users/\(uid)/\(upc)").observeSingleEvent(of: .value, with: { snapshot1 in
+            rootRef.child("users/\(uid)/products/\(upc)").observeSingleEvent(of: .value, with: { snapshot1 in
                 guard snapshot1.exists() else {
                     found(product, 0)
                     return
@@ -47,7 +47,7 @@ final class DataController {
     }
     
     static func addInventory(for uid: String, product: Product, quantity: Int) {
-        let inventoryRef = usersRef.child("\(uid)/\(product.upc)")
+        let inventoryRef = usersRef.child("\(uid)/products/\(product.upc)")
         inventoryRef.observeSingleEvent(of: .value, with: { snapshot in
             guard snapshot.exists() else {
                 inventoryRef.setValue(["name": product.name, "quantity": quantity])
@@ -65,7 +65,7 @@ final class DataController {
     }
     
     static func removeInventory(for uid: String, product: Product, quantity: Int) {
-        let inventoryRef = usersRef.child("\(uid)/\(product.upc)")
+        let inventoryRef = usersRef.child("\(uid)/products/\(product.upc)")
         inventoryRef.observeSingleEvent(of: .value, with: { snapshot in
             if snapshot.exists() {
                 let postDict = snapshot.value as? [String : AnyObject] ?? [:]

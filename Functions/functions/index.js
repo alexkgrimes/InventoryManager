@@ -8,19 +8,20 @@ admin.initializeApp();
  * Inventory stored at `/users/{userUid}/{productUpc}/quantity`.
  * Users save their device notification tokens to `/users/{userUid}/notificationTokens/{notificationToken}`.
  */
-exports.sendLowStockNotification = functions.database.ref('/users/{userUid}/{productUpc}/quantity')
+exports.sendLowStockNotification = functions.database.ref('/users/{userUid}/products/{productUpc}/quantity')
     .onWrite(async (change, context) => {
 		const userUid = context.params.userUid;
 		const productUpc = context.params.productUpc;
 
 		// If the change in inventory is not low-stock, 
-		if (change.after.val() > 10) {
+		let beforeQuantity = change.before.val() === null ? 0 : change.before.val()
+		if (beforeQuantity < change.after.val() || change.after.val() > 10) {
 			return console.log('User: ', userUid, ' with product: ', productUpc);
 		}
 		console.log('Low stock alert for user:', userUid, ' for product: ', productUpc);
 
 		// Get the product name
-		const getProductNamePromise = admin.database().ref(`/users/${userUid}/${productUpc}/name`).once('value');
+		const getProductNamePromise = admin.database().ref(`/users/${userUid}/products/${productUpc}/name`).once('value');
 
 		// Get the notification tokens
 		const getNotificationTokenPromise = admin.database().ref(`/users/${userUid}/notificationTokens`).once('value');
@@ -31,10 +32,12 @@ exports.sendLowStockNotification = functions.database.ref('/users/{userUid}/{pro
 		const productName = results[1].val();
 		console.log('Product name: ', productName);
 
+		if (productName === null) {
+			return console.log('Product has been removed.')
+		}
+
 		// Tokens
 		const tokensSnapshot = results[0];
-		// console.log('notification token: ', notificationToken);
-
 
 		// Check if there are any device tokens.
 		if (!tokensSnapshot.hasChildren()) {
