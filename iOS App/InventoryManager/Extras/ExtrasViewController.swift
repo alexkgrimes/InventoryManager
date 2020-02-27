@@ -119,7 +119,7 @@ private extension ExtrasViewController {
     }
     
     func handleNotification() {
-        
+        appDisplayDelegate.routeToNotificationsView()
     }
     
     func handleLogOut() {

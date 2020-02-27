@@ -16,6 +16,9 @@
 		FA39A23423DE7720008148B3 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA39A23323DE7720008148B3 /* ProductViewController.swift */; };
 		FA39A23623DE7737008148B3 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA39A23523DE7737008148B3 /* ProductView.swift */; };
 		FA39A23823EF1B1F008148B3 /* ProductResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA39A23723EF1B1E008148B3 /* ProductResponse.swift */; };
+		FA5D319B2403661E004AD1E2 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D319A2403661E004AD1E2 /* NotificationsViewController.swift */; };
+		FA5D319D24036634004AD1E2 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D319C24036634004AD1E2 /* NotificationsView.swift */; };
+		FA5D319F24060ABB004AD1E2 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D319E24060ABB004AD1E2 /* NotificationTableViewCell.swift */; };
 		FA7305D523FCC4DC00277B80 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7305D423FCC4DC00277B80 /* Toast.swift */; };
 		FA77503A23D6A26B0096BB0C /* AppDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA77503923D6A26B0096BB0C /* AppDisplayDelegate.swift */; };
 		FA92572A23F0751D0005C9BD /* ExtrasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92572923F0751D0005C9BD /* ExtrasViewController.swift */; };
@@ -60,6 +63,9 @@
 		FA39A23323DE7720008148B3 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		FA39A23523DE7737008148B3 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		FA39A23723EF1B1E008148B3 /* ProductResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponse.swift; sourceTree = "<group>"; };
+		FA5D319A2403661E004AD1E2 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		FA5D319C24036634004AD1E2 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		FA5D319E24060ABB004AD1E2 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		FA7305D423FCC4DC00277B80 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		FA77503923D6A26B0096BB0C /* AppDisplayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDisplayDelegate.swift; sourceTree = "<group>"; };
 		FA92572923F0751D0005C9BD /* ExtrasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtrasViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +162,9 @@
 		FA5D319924020575004AD1E2 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				FA5D319A2403661E004AD1E2 /* NotificationsViewController.swift */,
+				FA5D319C24036634004AD1E2 /* NotificationsView.swift */,
+				FA5D319E24060ABB004AD1E2 /* NotificationTableViewCell.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -447,13 +456,16 @@
 				FA39A23823EF1B1F008148B3 /* ProductResponse.swift in Sources */,
 				FA39A23123DD4E17008148B3 /* Product.swift in Sources */,
 				FAB37CB523A08D4C008632B7 /* AppearanceConstants.swift in Sources */,
+				FA5D319F24060ABB004AD1E2 /* NotificationTableViewCell.swift in Sources */,
 				FAB49A4823F22AEE00712F5B /* ExtrasHeaderView.swift in Sources */,
 				FA7305D523FCC4DC00277B80 /* Toast.swift in Sources */,
 				FA1E1191239F25BD0033104F /* AuthenticationController.swift in Sources */,
+				FA5D319D24036634004AD1E2 /* NotificationsView.swift in Sources */,
 				FAABE3E923B82CCE006EA1F4 /* BarcodeDelegate.swift in Sources */,
 				FA92572A23F0751D0005C9BD /* ExtrasViewController.swift in Sources */,
 				FA39A23423DE7720008148B3 /* ProductViewController.swift in Sources */,
 				FA1E118D239F21520033104F /* User.swift in Sources */,
+				FA5D319B2403661E004AD1E2 /* NotificationsViewController.swift in Sources */,
 				FAB2B9FE238B68C6000F315B /* SceneDelegate.swift in Sources */,
 				FA77503A23D6A26B0096BB0C /* AppDisplayDelegate.swift in Sources */,
 			);

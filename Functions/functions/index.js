@@ -47,8 +47,8 @@ exports.sendLowStockNotification = functions.database.ref('/users/{userUid}/prod
 		// Notification details.
 		const payload = {
 			notification: {
-			  title: 'One of your items has low stock!',
-			  body: `${productName} is almost out of stock.`
+			  title: 'Low Stock Alert',
+			  body: `You only have ${change.after.val()} left of ${productName}.`
 			}
 		};
 
@@ -70,5 +70,16 @@ exports.sendLowStockNotification = functions.database.ref('/users/{userUid}/prod
 		    }
 		  }
 		});
+
+
+		// Record notification
+		let timestamp = Date.now()
+
+		admin.database().ref(`/users/${userUid}/notifications/${timestamp}`).update({
+			title: payload.notification.title,
+			body : payload.notification.body
+		});
+
+
 		return Promise.all([]);
     });

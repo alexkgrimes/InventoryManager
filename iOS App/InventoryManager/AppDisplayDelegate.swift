@@ -73,6 +73,14 @@ class AppDisplayDelegate {
              navigationController?.present(navigation, animated: true, completion: nil)
         }
     }
+    
+    func routeToNotificationsView() {
+        let notificationsView = NotificationsViewController(appDisplayDelegate: self)
+        extrasNavigationController?.dismiss(animated: true) {
+            self.navigationController?.navigationBar.barStyle = .default
+            self.navigationController?.pushViewController(notificationsView, animated: true)
+        }
+    }
 }
 
 // MARK: - Error modals
