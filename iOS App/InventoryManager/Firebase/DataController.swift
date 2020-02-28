@@ -96,4 +96,15 @@ final class DataController {
         notificationTokenRef.setValue([notificationToken: ""])
 
     }
+    
+    static func notifications(for uid: String, closure: @escaping ([Notification]) -> Void) {
+        let notificationsRef = usersRef.child("\(uid)/notifications")
+        notificationsRef.observe(.value, with: { snapshot in
+            let notifications = snapshot.children.map { child -> Notification in
+                let snap = child as! DataSnapshot
+                return Notification(snapshot: snap)
+            }
+            closure(notifications)
+        })
+    }
 }

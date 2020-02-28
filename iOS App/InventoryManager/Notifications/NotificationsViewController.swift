@@ -12,6 +12,8 @@ class NotificationsViewController: UIViewController {
     
     var appDisplayDelegate: AppDisplayDelegate
     
+    var notifications: [Notification] = []
+    
     // MARK: - View Lifecycle
     
     init(appDisplayDelegate: AppDisplayDelegate) {
@@ -30,6 +32,9 @@ class NotificationsViewController: UIViewController {
         view = NotificationsView()
         (view as? NotificationsView)?.output = self
         (view as? NotificationsView)?.set(viewModel: makeViewModel())
+        
+        guard let uid = AuthController.userId else { return }
+        DataController.notifications(for: uid, closure: dataDidUpdate(_:))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -38,8 +43,18 @@ class NotificationsViewController: UIViewController {
     }
     
     func makeViewModel() -> NotificationsView.ViewModel {
-        let notification = NotificationTableViewCell.ViewModel(title: "Boop boop title", message: "You got stuff with low stock!", dateTime: "dateTime")
-        return NotificationsView.ViewModel(notifications: [notification])
+        let notificationViewModels = notifications.map { notification -> NotificationTableViewCell.ViewModel in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM d, h:mm a"
+            let dateString = dateFormatter.string(from: notification.dateTime! as Date)
+            return NotificationTableViewCell.ViewModel(title: notification.title, message: notification.body, dateTime: dateString)
+        }
+        return NotificationsView.ViewModel(notifications: notificationViewModels)
+    }
+    
+    func dataDidUpdate(_ notifications: [Notification]) {
+        self.notifications = notifications
+        didUpdate()
     }
 }
 

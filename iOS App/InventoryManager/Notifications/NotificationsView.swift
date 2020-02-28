@@ -59,6 +59,7 @@ class NotificationsView: UIView {
         super.layoutSubviews()
         backgroundColor = .white
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 44
         tableView.dataSource = self
         tableView.register(NotificationTableViewCell.self, forCellReuseIdentifier: "notificationCell")

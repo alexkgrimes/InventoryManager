@@ -48,7 +48,7 @@ exports.sendLowStockNotification = functions.database.ref('/users/{userUid}/prod
 		const payload = {
 			notification: {
 			  title: 'Low Stock Alert',
-			  body: `You only have ${change.after.val()} left of ${productName}.`
+			  body: `Only ${change.after.val()} left of ${productName}.`
 			}
 		};
 

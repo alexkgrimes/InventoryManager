@@ -11,7 +11,8 @@ import UIKit
 class NotificationTableViewCell: UITableViewCell {
     
     private enum Constants {
-        static let titleFontName = "Helvetica Neue"
+        static let titleFontName = "HelveticaNeue-Bold"
+        static let bodyFontName = "HelveticaNeue"
     }
     
     struct ViewModel {
@@ -38,9 +39,19 @@ class NotificationTableViewCell: UITableViewCell {
     
     let messageLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Constants.titleFontName, size: 12)
+        label.font = UIFont(name: Constants.bodyFontName, size: 16)
         label.textAlignment = .left
         label.textColor = Color.darkBlue
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: Constants.bodyFontName, size: 14)
+        label.textAlignment = .left
+        label.textColor = .lightGray
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -51,7 +62,7 @@ class NotificationTableViewCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.alignment = .leading
-        stackView.spacing = Spacing.eight
+        stackView.spacing = Spacing.four
         return stackView
     }()
     
@@ -59,6 +70,9 @@ class NotificationTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String!) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
+        
+        stackView.addArrangedSubview(dateLabel)
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(messageLabel)
         
@@ -80,6 +94,7 @@ class NotificationTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         titleLabel.text = nil
         messageLabel.text = nil
+        dateLabel.text = nil
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -89,6 +104,7 @@ class NotificationTableViewCell: UITableViewCell {
     func apply(viewModel: ViewModel) {
         titleLabel.text = viewModel.title
         messageLabel.text = viewModel.message
+        dateLabel.text = viewModel.dateTime
     }
 
 }
