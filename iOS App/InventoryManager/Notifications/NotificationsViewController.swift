@@ -28,10 +28,12 @@ class NotificationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Notifications"
         view = NotificationsView()
         (view as? NotificationsView)?.output = self
         (view as? NotificationsView)?.set(viewModel: makeViewModel())
+        
+        navigationController?.navigationBar.tintColor = .lightGray
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         
         guard let uid = AuthController.userId else { return }
         DataController.notifications(for: uid, closure: dataDidUpdate(_:))
@@ -61,6 +63,22 @@ class NotificationsViewController: UIViewController {
 private extension NotificationsViewController {
     func didUpdate() {
         (view as? NotificationsView)?.set(viewModel: makeViewModel())
+    }
+    
+    func setBackBarButtonCustom() {
+        //Back buttion
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "backArrow"), for: UIControl.State())
+        button.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 33/2, height: 27/2)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.leftBarButtonItem = barButton
+    }
+
+    @objc func dismissViewController()
+    {
+        _ = self.navigationController?.popViewController(animated: true)
     }
 }
 

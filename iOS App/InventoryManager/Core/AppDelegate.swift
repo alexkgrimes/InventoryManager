@@ -40,6 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 DataController.updateRemoteInstanceID(with: result.token)
             }
         }
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .normal)
+        UIBarButtonItem.appearance().title = nil
+        
         return true
     }
 
