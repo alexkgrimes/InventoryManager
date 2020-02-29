@@ -64,22 +64,6 @@ private extension NotificationsViewController {
     func didUpdate() {
         (view as? NotificationsView)?.set(viewModel: makeViewModel())
     }
-    
-    func setBackBarButtonCustom() {
-        //Back buttion
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "backArrow"), for: UIControl.State())
-        button.addTarget(self, action: #selector(dismissViewController), for: .touchUpInside)
-        button.frame = CGRect(x: 0, y: 0, width: 33/2, height: 27/2)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.leftBarButtonItem = barButton
-    }
-
-    @objc func dismissViewController()
-    {
-        _ = self.navigationController?.popViewController(animated: true)
-    }
 }
 
 extension NotificationsViewController: NotificationsViewOutput {
