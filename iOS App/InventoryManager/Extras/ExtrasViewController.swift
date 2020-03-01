@@ -103,7 +103,7 @@ extension ExtrasViewController: ExtrasViewOutput {
 
 private extension ExtrasViewController {
     func handleSetUpAlerts() {
-        
+        appDisplayDelegate.routeToAlertsView()
     }
     
     func handleRequestAReport() {
