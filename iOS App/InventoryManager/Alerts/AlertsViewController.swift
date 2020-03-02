@@ -13,6 +13,10 @@ class AlertsViewController: UIViewController {
     let appDisplayDelegate: AppDisplayDelegate
     
     var alerts: [Alert] = []
+    
+    private enum Constants {
+        static let titleFontName = "Helvetica Neue"
+    }
 
     init(appDisplayDelegate: AppDisplayDelegate) {
         self.appDisplayDelegate = appDisplayDelegate
@@ -28,22 +32,9 @@ class AlertsViewController: UIViewController {
         
         view = AlertsView()
         (view as? AlertsView)?.output = self
-        (view as? AlertsView)?.set(viewModel: makeViewModel())
+        dataDidUpdate([Alert(alertType: .lowStock, productUpc: nil)])
 
-        navigationController?.navigationBar.tintColor = .lightGray
-        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        
-        let button: UIButton = UIButton(frame: .zero)
-        button.titleLabel?.text = "＋"
-        button.titleLabel?.textColor = .lightGray
-        button.addTarget(self, action: "addAlert", for: .touchUpInside)
-        button.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            button.widthAnchor.constraint(equalToConstant: 50),
-            button.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        navigationController?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        setUpNavigationBarButtonItems()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -56,7 +47,11 @@ class AlertsViewController: UIViewController {
     }
     
     func makeViewModel() -> AlertsView.ViewModel {
-        return AlertsView.ViewModel(alerts: [AlertsTableViewCell.ViewModel(alertTypeText: "Low Stock Alert Type", productText: "For Melatonin 3mg")])
+        let alertViewModels = alerts.map { alert -> AlertsTableViewCell.ViewModel in
+            let alertTypeText = alert.alertType == .lowStock ? "Low Stock Alert" : "Out of Stock Alert"
+            return AlertsTableViewCell.ViewModel(alertTypeText: alertTypeText, productText: "product text")
+        }
+        return AlertsView.ViewModel(alerts: alertViewModels)
     }
 
     func dataDidUpdate(_ alerts: [Alert]) {
@@ -68,6 +63,23 @@ class AlertsViewController: UIViewController {
 private extension AlertsViewController {
     func didUpdate() {
         (view as? AlertsView)?.set(viewModel: makeViewModel())
+    }
+    
+    func setUpNavigationBarButtonItems() {
+        navigationController?.navigationBar.tintColor = .lightGray
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        
+        let button: UIButton = UIButton(type: .system)
+        button.setTitle("＋", for: .normal)
+        button.titleLabel?.font = UIFont(name: Constants.titleFontName, size: 36)
+        button.addTarget(self, action: "addAlert", for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 50),
+            button.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
 }
 

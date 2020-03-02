@@ -45,6 +45,16 @@ class AlertsView: UIView {
         return label
     }()
     
+    let emptyLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.attributedText = AlertsView.emptyString()
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .plain)
         table.separatorStyle = .singleLine
@@ -66,6 +76,7 @@ class AlertsView: UIView {
         tableView.register(AlertsTableViewCell.self, forCellReuseIdentifier: "alertCell")
         
         addSubview(titleLabel)
+        addSubview(emptyLabel)
         addSubview(tableView)
         
         NSLayoutConstraint.activate([
@@ -73,6 +84,13 @@ class AlertsView: UIView {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.sixteen),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        NSLayoutConstraint.activate([
+            emptyLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -160.0),
+            emptyLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            emptyLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Spacing.twentyFour),
+            emptyLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Spacing.twentyFour)
         ])
         
         NSLayoutConstraint.activate([
@@ -84,7 +102,26 @@ class AlertsView: UIView {
     }
     
     func apply(viewModel: ViewModel) {
-        tableView.reloadData()
+        if viewModel.alerts.isEmpty {
+            emptyLabel.isHidden = false
+            tableView.isHidden = true
+        } else {
+            emptyLabel.isHidden = true
+            tableView.isHidden = false
+            tableView.reloadData()
+        }
+    }
+    
+    static func emptyString() -> NSAttributedString {
+        let titleString = NSMutableAttributedString(string: "No alerts.",
+                                                            attributes: [NSAttributedString.Key.font: UIFont(name: Constants.titleFontName, size: 20), NSAttributedString.Key.foregroundColor: Color.darkBlue])
+        let messageString = NSMutableAttributedString(string: "\nTap + to schedule an alert.",
+                                                              attributes: [NSAttributedString.Key.font: UIFont(name: Constants.titleFontName, size: 20), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        let combination = NSMutableAttributedString()
+        
+        combination.append(titleString)
+        combination.append(messageString)
+        return combination
     }
 }
 

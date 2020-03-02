@@ -30,7 +30,6 @@ class NotificationsViewController: UIViewController {
 
         view = NotificationsView()
         (view as? NotificationsView)?.output = self
-        (view as? NotificationsView)?.set(viewModel: makeViewModel())
         
         navigationController?.navigationBar.tintColor = .lightGray
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
