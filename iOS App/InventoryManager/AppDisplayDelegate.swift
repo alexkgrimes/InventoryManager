@@ -14,6 +14,7 @@ class AppDisplayDelegate {
     let navigationController: UINavigationController?
     var productViewNavigationController: UINavigationController?
     var extrasNavigationController: UINavigationController?
+    var alertsNavigationController: UINavigationController?
     let codeDelegate = BarcodeDelegate(view: nil)
     
     init(navigationController: UINavigationController) {
@@ -87,6 +88,15 @@ class AppDisplayDelegate {
         extrasNavigationController?.dismiss(animated: true) {
             self.navigationController?.navigationBar.barStyle = .default
             self.navigationController?.pushViewController(alertsView, animated: true)
+        }
+    }
+    
+    func presentAddAlert() {
+        let addAlertView = AddAlertViewController(appDisplayDelegate: self)
+        alertsNavigationController = UINavigationController(rootViewController: addAlertView)
+        setUpAddAlertsView(addAlertView)
+        if let navigation = alertsNavigationController {
+            navigationController?.present(navigation, animated: true, completion: nil)
         }
     }
 }
@@ -173,5 +183,10 @@ private extension AppDisplayDelegate {
     
     func setUpProductView(_ productView: ProductViewController) {
         productView.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "✕", style: .plain, target: productView, action: #selector(productView.didDismiss))
+    }
+    
+    func setUpAddAlertsView(_ alertsView: AddAlertViewController) {
+        alertsView.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "✕", style: .plain, target: alertsView, action: #selector(alertsView.didDismiss))
+        alertsView.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Color.lightBlue], for: .normal)
     }
 }

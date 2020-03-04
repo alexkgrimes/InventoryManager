@@ -13,10 +13,9 @@ public struct Alert {
     let alertType: AlertType
     let productUpc: String?
     
-    public enum AlertType {
-        case lowStock
-        case outOfStock
-        case unknown
+    public enum AlertType: String, CaseIterable {
+        case lowStock = "Low Stock Alert"
+        case outOfStock = "Out of Stock Alert"
     }
     
     public init(alertType: AlertType, productUpc: String?) {
@@ -34,7 +33,8 @@ public struct Alert {
         } else if isOutOfStock {
             alertType = .outOfStock
         } else {
-            alertType = .unknown
+            // shouldn't get here but just default ot lowStock
+            alertType = .lowStock
         }
         
         if let productUpc = snapshotValue["upc"] as? String {
@@ -55,9 +55,6 @@ public struct Alert {
         case .outOfStock:
             isLowStock = false
             isOutOfStock = true
-        case .unknown:
-            isLowStock = false
-            isOutOfStock = false
         }
         
         if let upc = productUpc {

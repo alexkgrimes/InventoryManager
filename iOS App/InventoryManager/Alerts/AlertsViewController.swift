@@ -43,7 +43,7 @@ class AlertsViewController: UIViewController {
     }
     
     @objc func addAlert() {
-        print("add alert tapped")
+        appDisplayDelegate.presentAddAlert()
     }
     
     func makeViewModel() -> AlertsView.ViewModel {

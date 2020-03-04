@@ -24,6 +24,8 @@
 		FA5D31A6240B3EAF004AD1E2 /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D31A5240B3EAF004AD1E2 /* AlertsView.swift */; };
 		FA5D31A8240B404B004AD1E2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D31A7240B404B004AD1E2 /* Alert.swift */; };
 		FA5D31AA240B4841004AD1E2 /* AlertsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D31A9240B4841004AD1E2 /* AlertsTableViewCell.swift */; };
+		FA5D31B0240CBC41004AD1E2 /* AddAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D31AF240CBC41004AD1E2 /* AddAlertView.swift */; };
+		FA5D31B2240CBC52004AD1E2 /* AddAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D31B1240CBC52004AD1E2 /* AddAlertViewController.swift */; };
 		FA7305D523FCC4DC00277B80 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7305D423FCC4DC00277B80 /* Toast.swift */; };
 		FA77503A23D6A26B0096BB0C /* AppDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA77503923D6A26B0096BB0C /* AppDisplayDelegate.swift */; };
 		FA92572A23F0751D0005C9BD /* ExtrasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92572923F0751D0005C9BD /* ExtrasViewController.swift */; };
@@ -76,6 +78,8 @@
 		FA5D31A5240B3EAF004AD1E2 /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
 		FA5D31A7240B404B004AD1E2 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		FA5D31A9240B4841004AD1E2 /* AlertsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsTableViewCell.swift; sourceTree = "<group>"; };
+		FA5D31AF240CBC41004AD1E2 /* AddAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlertView.swift; sourceTree = "<group>"; };
+		FA5D31B1240CBC52004AD1E2 /* AddAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlertViewController.swift; sourceTree = "<group>"; };
 		FA7305D423FCC4DC00277B80 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		FA77503923D6A26B0096BB0C /* AppDisplayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDisplayDelegate.swift; sourceTree = "<group>"; };
 		FA92572923F0751D0005C9BD /* ExtrasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtrasViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +195,15 @@
 			path = Alerts;
 			sourceTree = "<group>";
 		};
+		FA5D31AE240CBC2C004AD1E2 /* AddAlert */ = {
+			isa = PBXGroup;
+			children = (
+				FA5D31AF240CBC41004AD1E2 /* AddAlertView.swift */,
+				FA5D31B1240CBC52004AD1E2 /* AddAlertViewController.swift */,
+			);
+			path = AddAlert;
+			sourceTree = "<group>";
+		};
 		FA7305D323FCC4CE00277B80 /* Toast */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +264,7 @@
 		FAB2B9FA238B68C6000F315B /* InventoryManager */ = {
 			isa = PBXGroup;
 			children = (
+				FA5D31AE240CBC2C004AD1E2 /* AddAlert */,
 				FAB37CB823A095E8008632B7 /* InventoryManager.entitlements */,
 				FA5D31A2240B3E7C004AD1E2 /* Alerts */,
 				FAB37CB323A08D37008632B7 /* Appearance */,
@@ -476,6 +490,7 @@
 				FAB2B9FC238B68C6000F315B /* AppDelegate.swift in Sources */,
 				FA5D31A8240B404B004AD1E2 /* Alert.swift in Sources */,
 				FA92573023F0E4C80005C9BD /* ExtraRowTableViewCell.swift in Sources */,
+				FA5D31B2240CBC52004AD1E2 /* AddAlertViewController.swift in Sources */,
 				FA39A22F23DD4C68008148B3 /* DataController.swift in Sources */,
 				FA92572C23F0752D0005C9BD /* ExtrasView.swift in Sources */,
 				FA39A23823EF1B1F008148B3 /* ProductResponse.swift in Sources */,
@@ -486,6 +501,7 @@
 				FAB49A4823F22AEE00712F5B /* ExtrasHeaderView.swift in Sources */,
 				FA7305D523FCC4DC00277B80 /* Toast.swift in Sources */,
 				FA5D31A124089806004AD1E2 /* Notification.swift in Sources */,
+				FA5D31B0240CBC41004AD1E2 /* AddAlertView.swift in Sources */,
 				FA1E1191239F25BD0033104F /* AuthenticationController.swift in Sources */,
 				FA5D319D24036634004AD1E2 /* NotificationsView.swift in Sources */,
 				FAABE3E923B82CCE006EA1F4 /* BarcodeDelegate.swift in Sources */,
