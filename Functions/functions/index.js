@@ -1,3 +1,23 @@
+//
+//  Functions
+//  InventoryManager
+//
+//  Created by Alex Grimes on 3/7/20.
+//  Copyright © 2020 Alex Grimes. All rights reserved.
+//
+
+// configure algolia
+const algoliasearch = require('algoliasearch');
+const dotenv = require('dotenv');
+dotenv.config();
+
+const algolia = algoliasearch(
+  process.env.ALGOLIA_APP_ID,
+  process.env.ALGOLIA_API_KEY
+);
+const index = algolia.initIndex(process.env.ALGOLIA_INDEX_NAME);
+
+// configure firebase
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
@@ -79,7 +99,57 @@ exports.sendLowStockNotification = functions.database.ref('/users/{userUid}/prod
 			title: payload.notification.title,
 			body : payload.notification.body
 		});
-
-
+		
 		return Promise.all([]);
     });
+
+/**
+ * Triggers when a new product is added to the cache, so it can be searchable by all users
+ *
+ * Cache stored at `/users/cache`.
+ * The product keys in firebase represents the upc code for the product
+ */
+exports.newProductAdded = functions.database.ref('/users/cache/{newProductUpc}').onCreate((created_child, context) => {
+
+	const record = created_child.val();
+	record.objectID = created_child.key;
+
+
+	index
+		.saveObject(record)
+		.then(() => {
+			console.log('Firebase object indexed in Algolia', record.objectID);
+			return Promise.all([]);
+		})
+		.catch(error => {
+			console.error('Error when indexing product into Algolia', error);
+			process.exit(1);
+		})
+
+	return Promise.all([]);
+});
+
+/**
+ * Triggers when a product is deleted from the cache, so users will no longer be able to search
+ *
+ * Cache stored at `/users/cache`.
+ * The product keys in firebase represents the upc code for the product
+ */
+exports.productDeleted = functions.database.ref('/users/cache/{deletedProductUpc}').onDelete((deleted_child, context) => {
+	// Get Algolia's objectID from the Firebase object key
+	const objectID = deleted_child.key;
+
+	// Remove the object from Algolia
+	index
+	    .deleteObject(objectID)
+	    .then(() => {
+	    	console.log('Firebase object deleted from Algolia', objectID);
+	    	return Promise.all([]);
+	    })
+	    .catch(error => {
+			console.error('Error when deleting contact from Algolia', error);
+			process.exit(1);
+	    });
+
+    return Promise.all([]);
+});

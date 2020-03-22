@@ -114,9 +114,9 @@ class AlertsView: UIView {
     
     static func emptyString() -> NSAttributedString {
         let titleString = NSMutableAttributedString(string: "No alerts.",
-                                                            attributes: [NSAttributedString.Key.font: UIFont(name: Constants.titleFontName, size: 20), NSAttributedString.Key.foregroundColor: Color.darkBlue])
+                                                    attributes: [NSAttributedString.Key.font: UIFont(name: Constants.titleFontName, size: 20)!, NSAttributedString.Key.foregroundColor: Color.darkBlue])
         let messageString = NSMutableAttributedString(string: "\nTap + to schedule an alert.",
-                                                              attributes: [NSAttributedString.Key.font: UIFont(name: Constants.titleFontName, size: 20), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+                                                              attributes: [NSAttributedString.Key.font: UIFont(name: Constants.titleFontName, size: 20)! , NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         let combination = NSMutableAttributedString()
         
         combination.append(titleString)

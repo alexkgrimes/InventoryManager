@@ -250,9 +250,9 @@ private extension ProductView {
     
     func quantityString(currentQuantity: String) -> NSAttributedString {
         let quantityTitleString = NSMutableAttributedString(string: Constants.quantityTitle,
-                                                            attributes: [NSAttributedString.Key.font: UIFont(name: Constants.titleFontName, size: 28), NSAttributedString.Key.foregroundColor: Color.darkBlue])
+                                                            attributes: [NSAttributedString.Key.font: UIFont(name: Constants.titleFontName, size: 28)!, NSAttributedString.Key.foregroundColor: Color.darkBlue])
         let currentQuantityString = NSMutableAttributedString(string: "\(Constants.currentText) \(currentQuantity)",
-                                                              attributes: [NSAttributedString.Key.font: UIFont(name: Constants.titleFontName, size: 16), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+                                                              attributes: [NSAttributedString.Key.font: UIFont(name: Constants.titleFontName, size: 16)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         let combination = NSMutableAttributedString()
         
         combination.append(quantityTitleString)

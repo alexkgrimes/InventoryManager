@@ -113,9 +113,9 @@ class NotificationsView: UIView {
     
     static func emptyString() -> NSAttributedString {
         let titleString = NSMutableAttributedString(string: "No notifications.",
-                                                            attributes: [NSAttributedString.Key.font: UIFont(name: Constants.titleFontName, size: 20), NSAttributedString.Key.foregroundColor: Color.darkBlue])
+                                                            attributes: [NSAttributedString.Key.font: UIFont(name: Constants.titleFontName, size: 20)!, NSAttributedString.Key.foregroundColor: Color.darkBlue])
         let messageString = NSMutableAttributedString(string: "\nSet up an alert to start receiving notifications.",
-                                                              attributes: [NSAttributedString.Key.font: UIFont(name: Constants.titleFontName, size: 20), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+                                                              attributes: [NSAttributedString.Key.font: UIFont(name: Constants.titleFontName, size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         let combination = NSMutableAttributedString()
         
         combination.append(titleString)
