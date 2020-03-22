@@ -32,6 +32,7 @@
 		FA92572C23F0752D0005C9BD /* ExtrasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92572B23F0752D0005C9BD /* ExtrasView.swift */; };
 		FA92572E23F0CDB40005C9BD /* ExtrasPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92572D23F0CDB40005C9BD /* ExtrasPresentationController.swift */; };
 		FA92573023F0E4C80005C9BD /* ExtraRowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92572F23F0E4C80005C9BD /* ExtraRowTableViewCell.swift */; };
+		FAA6EE4524155B8A0060B583 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA6EE4424155B8A0060B583 /* SearchController.swift */; };
 		FAABE3E923B82CCE006EA1F4 /* BarcodeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAABE3E823B82CCE006EA1F4 /* BarcodeDelegate.swift */; };
 		FAB2B9FC238B68C6000F315B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FB238B68C6000F315B /* AppDelegate.swift */; };
 		FAB2B9FE238B68C6000F315B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2B9FD238B68C6000F315B /* SceneDelegate.swift */; };
@@ -86,6 +87,7 @@
 		FA92572B23F0752D0005C9BD /* ExtrasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtrasView.swift; sourceTree = "<group>"; };
 		FA92572D23F0CDB40005C9BD /* ExtrasPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtrasPresentationController.swift; sourceTree = "<group>"; };
 		FA92572F23F0E4C80005C9BD /* ExtraRowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraRowTableViewCell.swift; sourceTree = "<group>"; };
+		FAA6EE4424155B8A0060B583 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		FAABE3E823B82CCE006EA1F4 /* BarcodeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDelegate.swift; sourceTree = "<group>"; };
 		FAB2B9F8238B68C6000F315B /* InventoryManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InventoryManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB2B9FB238B68C6000F315B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				FA1E1190239F25BD0033104F /* AuthenticationController.swift */,
 				FA39A22E23DD4C68008148B3 /* DataController.swift */,
+				FAA6EE4424155B8A0060B583 /* SearchController.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				FA92573023F0E4C80005C9BD /* ExtraRowTableViewCell.swift in Sources */,
 				FA5D31B2240CBC52004AD1E2 /* AddAlertViewController.swift in Sources */,
 				FA39A22F23DD4C68008148B3 /* DataController.swift in Sources */,
+				FAA6EE4524155B8A0060B583 /* SearchController.swift in Sources */,
 				FA92572C23F0752D0005C9BD /* ExtrasView.swift in Sources */,
 				FA39A23823EF1B1F008148B3 /* ProductResponse.swift in Sources */,
 				FA39A23123DD4E17008148B3 /* Product.swift in Sources */,

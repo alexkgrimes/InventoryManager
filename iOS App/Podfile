@@ -12,6 +12,7 @@ target 'InventoryManager' do
   pod 'Firebase/Auth'
   pod 'Firebase/Messaging'
   pod 'Firebase/Functions'
+  pod 'InstantSearch', '~> 4.0'
 
   target 'InventoryManagerTests' do
     inherit! :search_paths
