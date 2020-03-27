@@ -13,7 +13,7 @@ target 'InventoryManager' do
   pod 'Firebase/Messaging'
   pod 'Firebase/Functions'
   pod 'Firebase/RemoteConfig'
-  pod 'InstantSearch', '~> 4.0'
+  pod 'InstantSearch', '~> 5.0'
 
   target 'InventoryManagerTests' do
     inherit! :search_paths
