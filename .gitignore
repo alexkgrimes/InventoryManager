@@ -96,6 +96,8 @@ Functions/functions/.npm
 
 # Optional eslint cache
 Functions/functions/.eslintcache
+Functions/functions/.eslintrc.json
+Functions/functions/.gitignore
 
 # Optional REPL history
 Functions/functions/.node_repl_history
@@ -108,3 +110,7 @@ Functions/functions/.yarn-integrity
 
 # dotenv environment variables file
 Functions/functions/.env
+
+# Firebase functions
+Functions/.firebaserc
+Functions/.gitignore

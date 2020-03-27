@@ -21,6 +21,8 @@ class AddAlertView: UIView {
     private enum Constants {
         static let titleFontName = "Helvetica Neue"
         static let titleString = "Add an Alert"
+        static let productString = "Assign to Product (Optional)"
+        static let alertTypeString = "Select an Alert Type"
     }
     
     struct ViewModel {
@@ -46,11 +48,39 @@ class AddAlertView: UIView {
         return label
     }()
     
+    let alertTypeTitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: Constants.titleFontName, size: 24)
+        label.textAlignment = .left
+        label.textColor = .gray
+        label.adjustsFontSizeToFitWidth = true
+        label.text = Constants.alertTypeString
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let picker: UIPickerView = {
         let picker = UIPickerView()
         picker.backgroundColor = Color.veryLightGray
         picker.layer.cornerRadius = CornerRadius.medium
+        picker.translatesAutoresizingMaskIntoConstraints = false
         return picker
+    }()
+    
+    let productTitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: Constants.titleFontName, size: 24)
+        label.textAlignment = .left
+        label.textColor = .gray
+        label.adjustsFontSizeToFitWidth = true
+        label.text = Constants.productString
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let productSearcher: SearchViewController = {
+        let searcher = SearchViewController()
+        return searcher
     }()
     
     let vStack: UIStackView = {
@@ -67,8 +97,16 @@ class AddAlertView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        productSearcher.willMove(toParent: output)
+        
         vStack.addArrangedSubview(title)
+        vStack.addArrangedSubview(alertTypeTitle)
         vStack.addArrangedSubview(picker)
+        vStack.addArrangedSubview(productTitle)
+        vStack.addArrangedSubview(productSearcher.view)
+        
+        output?.addChild(productSearcher)
+        productSearcher.didMove(toParent: output)
         
         addSubview(vStack)
         

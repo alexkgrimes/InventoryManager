@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseRemoteConfig
 import FirebaseMessaging
 
 @UIApplicationMain
@@ -44,6 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .normal)
         UIBarButtonItem.appearance().title = nil
         
+        let _ = RemoteConfigValues.sharedInstance
         return true
     }
 
@@ -79,5 +81,39 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .badge, .sound])
+    }
+}
+
+class RemoteConfigValues {
+
+  static let sharedInstance = RemoteConfigValues()
+
+  private init() {
+    loadDefaultValues()
+    fetchCloudValues()
+  }
+
+  func loadDefaultValues() {
+    let appDefaults: [String: Any?] = [
+      "algolia_api_key" : ""
+    ]
+    RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])
+  }
+    
+    func fetchCloudValues() {
+      // 1
+      // WARNING: Don't actually do this in production!
+      let fetchDuration: TimeInterval = 10
+      RemoteConfig.remoteConfig().fetch(withExpirationDuration: fetchDuration) { status, error in
+
+        if let error = error {
+          print("Uh-oh. Got an error fetching remote values \(error)")
+          return
+        }
+
+        // 2
+        RemoteConfig.remoteConfig().activate()
+        print("Retrieved values from the cloud!")
+      }
     }
 }
