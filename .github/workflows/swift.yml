@@ -35,7 +35,7 @@ jobs:
     - name: Build and test
 #       working-directory: ./iOS\ App
       run: |
-        cd iOS/ App
+        cd "iOS App"
         xcodebuild clean test -project InventoryManager.xcodeproj -scheme InventoryManager -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
       env:
         destination: ${{ matrix.destination }}
