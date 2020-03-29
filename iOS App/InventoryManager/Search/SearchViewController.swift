@@ -35,37 +35,63 @@ class SearchViewController: UIViewController {
            label.translatesAutoresizingMaskIntoConstraints = false
            return label
     }()
+    
+    let searchBarController: TextFieldController = .init(textField: UITextField())
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(productTitle)
         view.backgroundColor = .blue
-        
-        NSLayoutConstraint.activate([
-            view.heightAnchor.constraint(equalToConstant: 60.0)
-        ])
         
         let apiKey = RemoteConfig.remoteConfig()
             .configValue(forKey: "algolia_api_key")
             .stringValue ?? ""
 
-        let client = Client(appID: "ERY7OGMDGD", apiKey: apiKey)
-        let index = client.index(withName: "PRODUCTS")
+        let queryInputInteractor: QueryInputInteractor = .init()
         
-        let customRanking = ["name"]
-        let settings = ["searchableAttributes": customRanking]
-        index.setSettings(settings, completionHandler: { (content, error) -> Void in
-            if error != nil {
-                print("Error when applying settings: \(error!)")
-            }
-        })
+        let searcher: SingleIndexSearcher = SingleIndexSearcher(appID: "ERY7OGMDGD", apiKey: apiKey, indexName: "PRODUCTS")
         
-        // Search for a first name
-        index.search(Query(query: "melatonen"), completionHandler: { (content, error) -> Void in
-            if error == nil {
-                print("Result: \(String(describing: content))")
-            }
-        })
+        queryInputInteractor.connectSearcher(searcher, searchTriggeringMode: .searchAsYouType)
+        queryInputInteractor.connectController(searchBarController)
     }
 }
+
+public class TextFieldController: NSObject, QueryInputController {
+  
+  public var onQueryChanged: ((String?) -> Void)?
+  public var onQuerySubmitted: ((String?) -> Void)?
+  
+  let textField: UITextField
+
+  public init (textField: UITextField) {
+    self.textField = textField
+    super.init()
+    setupTextField()
+  }
+  
+  public func setQuery(_ query: String?) {
+    textField.text = query
+  }
+
+  @objc func textFieldTextChanged(textField: UITextField) {
+    guard let searchText = textField.text else { return }
+    onQueryChanged?(searchText)
+  }
+  
+  private func setupTextField() {
+    textField.returnKeyType = .search
+    textField.addTarget(self, action: #selector(textFieldTextChanged), for: .editingChanged)
+    textField.delegate = self
+  }
+  
+}
+
+extension TextFieldController: UITextFieldDelegate {
+  
+  public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    onQuerySubmitted?(textField.text)
+    return true
+  }
+  
+}
+

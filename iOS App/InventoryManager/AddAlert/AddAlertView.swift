@@ -103,7 +103,7 @@ class AddAlertView: UIView {
         vStack.addArrangedSubview(alertTypeTitle)
         vStack.addArrangedSubview(picker)
         vStack.addArrangedSubview(productTitle)
-        vStack.addArrangedSubview(productSearcher.view)
+        vStack.addArrangedSubview(productSearcher.searchBarController.textField)
         
         output?.addChild(productSearcher)
         productSearcher.didMove(toParent: output)
