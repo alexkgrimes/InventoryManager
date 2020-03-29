@@ -24,6 +24,7 @@ jobs:
     - name: Install Dependences
       working-directory: ./iOS\ App
       run: pod install
+      shell: bash
           
     - name: Build and test
       working-directory: ./iOS\ App
