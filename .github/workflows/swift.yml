@@ -14,7 +14,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        destination: ['platform=iOS Simulator,OS=13.1,name=iPhone 8']
+        destination: ['platform:iOS Simulator, id:C9A792D9-3C59-49B2-840E-F51E6BD9BF5C, OS:13.3, name:iPhone 8']
         xcode: ['/Applications/Xcode.app/Contents/Developer']
 
     steps:
