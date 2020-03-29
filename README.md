@@ -10,4 +10,6 @@ Right from your phone, you can set up alerts for Low Stock or Out of Stock produ
 ## Examples
 
 ## License
-
+### The MIT License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
+Copyright (c) 2020 Alex Grimes
