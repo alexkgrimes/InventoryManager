@@ -26,14 +26,20 @@ jobs:
       
     - name: Xcode version
       run: /usr/bin/xcodebuild -version
-
+      
+    - name: Install Dependences
+      run: |
+        cd "iOS App"
+        pod repo update
+        pod install
+      shell: bash
+      
 #     - name: Install Dependences
 #       working-directory: ./iOS\ App
 #       run: pod install
 #       shell: bash
           
     - name: Build and test
-#       working-directory: ./iOS\ App
       run: |
         cd "iOS App"
         xcodebuild clean test \
