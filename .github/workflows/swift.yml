@@ -20,20 +20,14 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    
-    - name: Bundle Install
-      working-directory: ./iOS\ App
-      run: bundle install
       
-    - name: Dependencies
+    - name: Install Dependences
       working-directory: ./iOS\ App
-      run: bundle exec pod install
-      env:
-          DEVELOPER_DIR: ${{ matrix.xcode }}
+      run: pod install
           
     - name: Build and test
       working-directory: ./iOS\ App
-      run: bundle exec fastlane scan --destination "${destination}" --scheme "InventoryManager"
+      run: xcodebuild clean test -project InventoryManager.xcodeproj -scheme InventoryManager -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
       env:
         destination: ${{ matrix.destination }}
         DEVELOPER_DIR: ${{ matrix.xcode }}
