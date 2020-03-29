@@ -1,4 +1,4 @@
-name: Swift
+name: CI
 
 on:
   push:
@@ -7,12 +7,28 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-
+  test:
+    # Job name is Test
+    name: Build
+    # This job runs on macOS
     runs-on: macos-latest
+    strategy:
+      matrix:
+        destination: ['platform=iOS Simulator,OS=13.1,name=iPhone 8']
+        xcode: ['/Applications/Xcode.app/Contents/Developer']
 
     steps:
-    - uses: actions/checkout@v1
+    - name: Checkout
+      uses: actions/checkout@v1
+    
+    - name: Bundle Install
+      run: bundle install
+      
+    - name: Dependencies
+      run: bundle exec pod install
+      env:
+          DEVELOPER_DIR: ${{ matrix.xcode }}
+
     - name: Build
       run: swift build -v
     - name: Run tests
