@@ -11,7 +11,7 @@ jobs:
     # Job name is Test
     name: Build
     # This job runs on macOS
-    runs-on: macOS-latest
+    runs-on: macos-latest
     strategy:
       matrix:
         destination: ['platform=iOS Simulator,OS=13.1,name=iPhone 8']
@@ -21,10 +21,16 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       
-    - name: Install Dependences
-      working-directory: ./iOS\ App
-      run: pod install
-      shell: bash
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_11.3.app
+      
+    - name: Xcode version
+      run: /usr/bin/xcodebuild -version
+
+#     - name: Install Dependences
+#       working-directory: ./iOS\ App
+#       run: pod install
+#       shell: bash
           
     - name: Build and test
       working-directory: ./iOS\ App
